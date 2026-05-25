@@ -181,21 +181,16 @@ function Index() {
               <div className="flex items-baseline gap-4">
                 <span className="font-mono text-[11px] tracking-[0.2em] text-primary">P2</span>
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                  Software · v2.4
+                  Software for Business
                 </span>
               </div>
               <h3 className="mt-8 font-display text-4xl font-semibold tracking-tight md:text-5xl">
-                CAPTURES BOOTH<br />
-                <span className="text-primary">Connected ops.</span>
+                CAPTURES<br />
+                <span className="text-primary">BOOTH.</span>
               </h3>
               <p className="mt-6 max-w-md text-sm text-muted-foreground md:text-base">
-                Connected booth management system for modern event operations. Dashboards, queues, prints, and galleries — coordinated in one place.
+                Event management, AI experience, instant sharing, live gallery, and client delivery — built for modern photobooth operators and agencies.
               </p>
-              <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                <span><span className="text-primary">99.9</span> uptime</span>
-                <span><span className="text-primary">12</span> modules</span>
-                <span><span className="text-primary">Live</span> sync</span>
-              </div>
               <a
                 href="http://captures.photo/booth"
                 target="_blank"
@@ -206,26 +201,29 @@ function Index() {
               </a>
             </div>
 
-            {/* Dashboard preview */}
+            {/* Module preview */}
             <div className="md:col-span-7">
               <div className="border border-border/50 bg-background/30">
                 <div className="flex items-center justify-between border-b border-border/50 px-4 py-3">
                   <div className="flex items-center gap-2">
                     <span className="inline-block h-1.5 w-1.5 bg-primary" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground">captures.booth / dashboard</span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground">captures.booth / modules</span>
                   </div>
                   <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground">v2.4</span>
                 </div>
-                <div className="grid grid-cols-2 gap-px bg-border/40 md:grid-cols-4">
+                <div className="grid grid-cols-2 gap-px bg-border/40 md:grid-cols-3">
                   {[
-                    { m: "Dashboard", v: "live" },
-                    { m: "Queue", v: "08" },
-                    { m: "Prints", v: "1.2k" },
-                    { m: "Gallery", v: "sync" },
-                    { m: "QR Flow", v: "ok" },
+                    { m: "Live Gallery", v: "sync" },
+                    { m: "Instant Sharing", v: "ok" },
+                    { m: "Customize UX/UI", v: "active" },
+                    { m: "Framework Designer", v: "PRINT · GIF · Video" },
+                    { m: "Event Dashboard", v: "live" },
+                    { m: "Integration", v: "api" },
+                    { m: "Multi-event Control", v: "ready" },
+                    { m: "Realtime Monitor", v: "↗" },
+                    { m: "Branding", v: "on" },
                     { m: "Analytics", v: "↗" },
-                    { m: "Setup", v: "ready" },
-                    { m: "Booth SW", v: "v2.4" },
+                    { m: "Lead Collection", v: "auto" },
                   ].map((m) => (
                     <div key={m.m} className="bg-[color:var(--color-teal)] p-5">
                       <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-primary">Module</div>

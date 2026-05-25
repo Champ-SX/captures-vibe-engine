@@ -1,55 +1,35 @@
-## Restructure "The System" into three asymmetric pillars
+## Edit P2 — CAPTURES BOOTH Section
 
-Replace the current 2x2 equal grid in `src/routes/index.tsx` with three independently-styled pillar blocks, in priority order. Remove Case Studies from this section entirely (it stays as the existing "Featured work" section further down the page).
+Update the homepage Pillar 2 (CAPTURES BOOTH) section in `src/routes/index.tsx` with the new copy provided by the user.
 
-### New section structure
+### Changes
 
-Section eyebrow stays `01 — The system`, but headline shifts to something operational like "Three pillars. One event experience platform." with a meta line "Product · Software · Activation".
+**Left column (copy block):**
+- Subtitle label: `Software for Business` (replacing "Software · v2.4")
+- Headline: `CAPTURES BOOTH.` (replacing "CAPTURES BOOTH / Connected ops.")
+- Description: "Event management, AI experience, instant sharing, live gallery, and client delivery — built for modern photobooth operators and agencies."
+- Remove the 3 stat badges (99.9 uptime / 12 modules / Live sync) — the module grid below tells this story visually
+- Keep CTA: `Open captures.photo/booth ↗`
 
-Then three full-width, visually distinct blocks stacked vertically — not a grid. Each block has its own background tone, layout, and visual weight.
-
----
-
-### Pillar 1 — Product & Services (primary, largest)
-
-- Full-bleed dark block on `--background` (charcoal), tallest block in the section.
-- Asymmetric two-column layout (≈60/40): left = oversized editorial typography, right = cinematic event photo.
-- Below the split, a horizontal modular preview strip showing 4–5 booth thumbnails pulled from `src/data/products.ts` (Mirror, 360 Video, AI Portrait, Multi-Camera, Open-Air), each a small image tile with monospace label, scroll-overflow on mobile.
-- Two sub-labels: "Custom Experience" and "Legacy Photobooth · 12 products".
-- Lime CTA → `/product-services`.
-- Strongest type scale (e.g. `text-6xl md:text-8xl`), tight tracking.
-
-### Pillar 2 — CAPTURES BOOTH (SaaS, technical)
-
-- Narrower block on `--color-teal` background (reuse the existing teal section's tone) — clearly different surface from Pillar 1.
-- Layout: left column = description + "Open captures.photo/booth ↗" outline-lime CTA; right column = condensed dashboard preview grid (small module tiles like Dashboard / Queue / Prints / Gallery / Analytics with mono labels and thin lime dividers, more "UI chrome" feel than the current version).
-- Smaller headline scale than Pillar 1. Mono micro-labels everywhere ("v2.4", "uptime", "modules").
-- This replaces the existing standalone "CAPTURES BOOTH preview" section further down the page — fold it into the system section so it reads as pillar 2.
-
-### Pillar 3 — Space Activation (lifestyle, venue)
-
-- Block with a lighter/warmer surface (use existing `--surface` or a subtle yellow-tinted band) to break from the teal above.
-- Layout: full-width lifestyle/venue photograph on the left (≈55%), right column copy block with description, revenue-share callout, and a lime arrow link → `/space-activation`.
-- More whitespace, airier padding, softer rhythm than the other two.
-- Small inline meta row: "Cafés · Retail · Lifestyle venues" in mono.
-
----
-
-### Visual separation rules
-
-- Each pillar gets a different background token (charcoal / teal / surface), no shared grid lines between them.
-- Vary vertical padding per pillar (Pillar 1 tallest, Pillar 2 medium, Pillar 3 medium-airy).
-- Each pillar has its own numeric index (`P1 / P2 / P3`) shown in the top-left as a mono label, replacing the old `01–04` grid numbering.
-- No 2x2 grid, no equal cards, no shared border-px hairlines between pillars.
-
-### Removals
-
-- Remove Case Studies card from the system section (it remains as the existing "Featured work" section lower on the page — untouched).
-- Remove the separate standalone "CAPTURES BOOTH preview" section (its content is absorbed into Pillar 2).
-- Drop the "Four operational areas" meta label.
+**Right column (module grid):**
+- Update dashboard title bar from "captures.booth / dashboard" to "captures.booth / modules"
+- Replace the 8 old module tiles with 11 new ones:
+  - Live Gallery (sync)
+  - Instant Sharing (ok)
+  - Customize UX/UI (active)
+  - Framework Designer (PRINT · GIF · Video)
+  - Event Dashboard (live)
+  - Integration (api)
+  - Multi-event Control (ready)
+  - Realtime Monitor (↗)
+  - Branding (on)
+  - Analytics (↗)
+  - Lead Collection (auto)
+- Layout: 3 columns on desktop (was 4) to accommodate 11 items in a cleaner grid
 
 ### Files touched
+- `src/routes/index.tsx` — surgical replacement of Pillar 2 section only
 
-- `src/routes/index.tsx` — rewrite the "SECTION INDEX" block as three pillar blocks; delete the standalone CAPTURES BOOTH section below it.
-- No new components required (keep it inline for editorial control); reuse `SectionLabel`, existing tokens, and product images already in `src/data/products.ts`.
-- No changes to routes, data, or other pages.
+### No other changes
+- P1, P3, Featured Work, Contact sections remain untouched
+- No new routes, components, or dependencies needed
