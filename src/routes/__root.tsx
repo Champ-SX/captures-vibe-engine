@@ -77,11 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "CAPTURES — Event experience tools for modern activations" },
       { name: "description", content: "CAPTURES is a modern photobooth and event experience system by SIXSHEET. Built for brand activations, retail, and live experiences." },
       { name: "author", content: "SIXSHEET" },
-      { property: "og:title", content: "CAPTURES — Event experience tools" },
-      { property: "og:description", content: "Photobooth systems, space activations, and event technology built for modern brands." },
+      { property: "og:title", content: "CAPTURES — Event experience tools for modern activations" },
+      { property: "og:description", content: "CAPTURES is a modern photobooth and event experience system by SIXSHEET. Built for brand activations, retail, and live experiences." },
       { property: "og:site_name", content: "CAPTURES" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "CAPTURES — Event experience tools for modern activations" },
+      { name: "twitter:description", content: "CAPTURES is a modern photobooth and event experience system by SIXSHEET. Built for brand activations, retail, and live experiences." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4ae06ca7-4e8b-48d5-915d-0033f232a84b" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/4ae06ca7-4e8b-48d5-915d-0033f232a84b" },
     ],
     links: [
       {
