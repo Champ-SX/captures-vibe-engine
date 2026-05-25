@@ -77,7 +77,7 @@ function ProductServices() {
         </div>
       </section>
 
-      {/* LEGACY PHOTOBOOTH */}
+      {/* READY TO DEPLOY PHOTOBOOTH */}
       <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
         <div className="mx-auto max-w-[1400px] px-6 py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
@@ -88,7 +88,7 @@ function ProductServices() {
           </div>
 
           <div className="mt-16 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
-            {products.map((p, i) => (
+            {products.slice(0, 8).map((p, i) => (
               <Link
                 key={p.id}
                 to="/product-services/$productId"
@@ -112,6 +112,36 @@ function ProductServices() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-20">
+            <SectionLabel index="03">Photoautomat Systems</SectionLabel>
+            <div className="mt-8 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
+              {products.slice(8).map((p, i) => (
+                <Link
+                  key={p.id}
+                  to="/product-services/$productId"
+                  params={{ productId: p.id }}
+                  className="group block bg-[color:var(--color-teal)] p-5 transition-colors hover:bg-background"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-surface">
+                    <img src={p.image} alt={p.name} className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-[1.03]" />
+                    <span className="absolute left-3 top-3 bg-background/85 px-2 py-1 font-mono text-[10px] tracking-[0.2em] text-primary">
+                      {String(i + 9).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="mt-4 flex items-baseline justify-between gap-2">
+                    <h3 className="font-display text-lg font-semibold">{p.name}</h3>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground group-hover:text-primary">→</span>
+                  </div>
+                  <p className="mt-1 text-sm text-muted-foreground">{p.tagline}</p>
+                  <div className="mt-4 grid grid-cols-2 gap-2 border-t border-border pt-3 font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+                    <div><span className="text-foreground/70">Output</span><br />{p.output}</div>
+                    <div><span className="text-foreground/70">Best for</span><br />{p.bestFor}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>
