@@ -69,7 +69,7 @@ function CaseStudyDetail() {
         <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 md:grid-cols-[1fr_2fr]">
           <SectionLabel index="02">Read case study</SectionLabel>
           <div className="space-y-6 text-lg text-muted-foreground md:text-xl">
-            {cs.article.split("\n\n").map((paragraph, i) => (
+            {cs.article.split("\n\n").map((paragraph: string, i: number) => (
               <p key={i}>{paragraph}</p>
             ))}
           </div>
