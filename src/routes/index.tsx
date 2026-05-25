@@ -168,6 +168,20 @@ function Index() {
                     </div>
                   </Link>
                 ))}
+              <Link
+                to="/product-services"
+                className="group block w-[220px] flex-shrink-0 bg-primary"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden flex items-center justify-center">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground">
+                    →
+                  </span>
+                </div>
+                <div className="p-3">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/80">All</div>
+                  <div className="mt-2 font-display text-sm font-medium text-primary-foreground">See all products →</div>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
