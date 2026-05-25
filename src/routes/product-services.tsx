@@ -82,7 +82,13 @@ function ProductServices() {
         <div className="mx-auto max-w-[1400px] px-6 py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <SectionLabel index="02">Ready to Deploy Photobooth</SectionLabel>
+              <SectionLabel index="02">Lineup</SectionLabel>
+              <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">
+                Event-Ready Photobooth Systems
+              </h2>
+              <p className="mt-4 max-w-2xl text-base text-muted-foreground md:text-lg">
+                A growing collection of photobooth formats designed for different event experiences, guest interactions, and operational needs. From roving cameras and social-first video booths to classic photoautomat systems and creative print experiences — each format is built for real-world deployment, branded customization, and live engagement.
+              </p>
             </div>
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">{products.length} products</span>
           </div>
