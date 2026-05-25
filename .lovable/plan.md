@@ -1,35 +1,41 @@
-## Edit P2 — CAPTURES BOOTH Section
+# Update Product & Services page
 
-Update the homepage Pillar 2 (CAPTURES BOOTH) section in `src/routes/index.tsx` with the new copy provided by the user.
+Scope: copy + data updates only on `/product-services`. No layout/design changes.
 
-### Changes
+## 1. Hero (`src/routes/product-services.tsx`)
 
-**Left column (copy block):**
-- Subtitle label: `Software for Business` (replacing "Software · v2.4")
-- Headline: `CAPTURES BOOTH.` (replacing "CAPTURES BOOTH / Connected ops.")
-- Description: "Event management, AI experience, instant sharing, live gallery, and client delivery — built for modern photobooth operators and agencies."
-- Remove the 3 stat badges (99.9 uptime / 12 modules / Live sync) — the module grid below tells this story visually
-- Keep CTA: `Open captures.photo/booth ↗`
+- Headline → "Photobooth systems for every format of event." (split as two lines, second line muted)
+- Subtitle → "A Custom Experience and a hardware catalogue engineered around how modern activations actually flow — from unattended retail to high-volume brand experiences."
 
-**Right column (module grid):**
-- Update dashboard title bar from "captures.booth / dashboard" to "captures.booth / modules"
-- Replace the 8 old module tiles with 11 new ones:
-  - Live Gallery (sync)
-  - Instant Sharing (ok)
-  - Customize UX/UI (active)
-  - Framework Designer (PRINT · GIF · Video)
-  - Event Dashboard (live)
-  - Integration (api)
-  - Multi-event Control (ready)
-  - Realtime Monitor (↗)
-  - Branding (on)
-  - Analytics (↗)
-  - Lead Collection (auto)
-- Layout: 3 columns on desktop (was 4) to accommodate 11 items in a cleaner grid
+## 2. Section 01 · Custom Experience
 
-### Files touched
-- `src/routes/index.tsx` — surgical replacement of Pillar 2 section only
+Keep current heading and intro paragraph. Add two new tiles to the feature grid (becomes 8 items):
 
-### No other changes
-- P1, P3, Featured Work, Contact sections remain untouched
-- No new routes, components, or dependencies needed
+- **Data and report** — "Leverage insights for the next activation."
+- **Queue and Check-In** — "Manage guest flow and on-site check-in."
+
+## 3. Section 02 · READY TO DEPLOY PHOTOBOOTH
+
+- Section label "02" → "Ready to Deploy Photobooth"
+- Remove headline "Twelve booths. One system." and any descriptive copy → keep only the label + product count + grid (no description, per instruction)
+
+## 4. Product list rename (`src/data/products.ts`)
+
+Rename the 12 products in order. Keep all existing taglines, images, features, specs, samples for now (only `name` changes); ids stay the same so detail routes keep working.
+
+1. LCA
+2. PHOTOMOOV
+3. AUTO SNAP
+4. STORYBOOTH
+5. POPUP FILM SLIDE
+6. POPUP TOP VIEW
+7. POPUP STUDIO
+8. AI BOOTH
+9. BOX SHOT (photoautomat)
+10. SX TALLY (photoautomat)
+11. SX PORTABLE (photoautomat)
+12. SX STANDARD (photoautomat)
+
+## Open question
+
+Taglines/descriptions/images for each new product are kept from the previous data as placeholders. Share new copy/photos per product whenever ready and I'll swap them in.
