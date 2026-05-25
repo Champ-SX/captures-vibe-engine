@@ -283,35 +283,150 @@ function Index() {
       </section>
 
       {/* FEATURED WORK */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-[1400px] px-6 py-24">
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
           <div className="flex items-end justify-between">
             <SectionLabel index="03">Featured work</SectionLabel>
-            <Link to="/case-studies" className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-primary">
-              All case studies →
-            </Link>
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              Selected activations
+            </span>
           </div>
-          <div className="mt-12 grid gap-8 md:grid-cols-2">
-            {caseStudies.slice(0, 2).map((cs) => (
-              <Link
-                key={cs.slug}
-                to="/case-studies/$slug"
-                params={{ slug: cs.slug }}
-                className="group block"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden border border-border bg-surface">
-                  <img src={cs.hero} alt={cs.client} className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-[1.02]" />
-                  <div className="absolute left-4 top-4 bg-background/85 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
-                    {cs.category}
+
+          <div className="mt-16 flex flex-col gap-20">
+            {/* 01 — Estee Lauder */}
+            <div className="grid gap-10 md:grid-cols-12 md:gap-12">
+              <div className="md:col-span-7">
+                <div className="relative aspect-[16/10] overflow-hidden border border-border">
+                  <img
+                    src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80"
+                    alt="Estee Lauder Pure Color Desire lipstick launch event"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute left-4 top-4 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                    Beauty · Product Launch
                   </div>
                 </div>
-                <div className="mt-5 flex items-baseline justify-between gap-4">
-                  <h3 className="font-display text-xl font-semibold tracking-tight md:text-2xl">{cs.title}</h3>
-                  <span className="font-mono text-[11px] text-muted-foreground">{cs.year}</span>
+              </div>
+              <div className="flex flex-col justify-center md:col-span-5">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[11px] tracking-[0.2em] text-primary">01</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    Estee Lauder
+                  </span>
                 </div>
-                <div className="eyebrow mt-2">{cs.client}</div>
-              </Link>
-            ))}
+                <h3 className="mt-6 font-display text-3xl font-semibold leading-[1.05] tracking-tight md:text-4xl">
+                  Pure Color Desire
+                </h3>
+                <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  Collaborating with <strong>Estee Lauder</strong> for the new "Pure Color Desire" lipstick collection product launch at The St. Regis Hotel, Bangkok.
+                </p>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  We created a <strong>"cinematic scene"</strong> feature of our VIDEOBOOTH — shooting a fashion video that exposes a modelish quality in every girl. VIDEOBOOTH is the latest marketing product powerful enough to speak brand concepts while individually generating content for each customer.
+                </p>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  Beauty bloggers and influencers created and shared content across Facebook, Instagram, and TikTok. The event hashtag produced <strong>2,753 posts</strong> for this opening event.
+                </p>
+                <div className="mt-8 flex items-center gap-6 border-t border-border pt-6">
+                  <div>
+                    <div className="font-display text-2xl font-semibold">2,753</div>
+                    <div className="eyebrow mt-1">Hashtag posts</div>
+                  </div>
+                  <div>
+                    <div className="font-display text-2xl font-semibold">VIDEOBOOTH</div>
+                    <div className="eyebrow mt-1">Product used</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 02 — Cartier */}
+            <div className="grid gap-10 md:grid-cols-12 md:gap-12">
+              <div className="order-1 flex flex-col justify-center md:order-none md:col-span-5">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[11px] tracking-[0.2em] text-primary">02</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    Cartier
+                  </span>
+                </div>
+                <h3 className="mt-6 font-display text-3xl font-semibold leading-[1.05] tracking-tight md:text-4xl">
+                  Precious Garage
+                </h3>
+                <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  A proud opportunity to work with <strong>Cartier Precious Garage</strong> — organized in the center of Bangkok at Siam Paragon. Thai Cartier fans experienced a fabulous photo setting inside a glittering golden container.
+                </p>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  The activation delivered impressive physical prints and digital GIF files. S/X massively generated <strong>4,526 downloaded files</strong> and <strong>4,500 prints</strong> throughout the event.
+                </p>
+                <div className="mt-8 flex items-center gap-6 border-t border-border pt-6">
+                  <div>
+                    <div className="font-display text-2xl font-semibold">4,526</div>
+                    <div className="eyebrow mt-1">Downloads</div>
+                  </div>
+                  <div>
+                    <div className="font-display text-2xl font-semibold">4,500</div>
+                    <div className="eyebrow mt-1">Prints</div>
+                  </div>
+                </div>
+              </div>
+              <div className="order-none md:order-1 md:col-span-7">
+                <div className="relative aspect-[16/10] overflow-hidden border border-border">
+                  <img
+                    src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1600&q=80"
+                    alt="Cartier Precious Garage golden container activation"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute left-4 top-4 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                    Luxury · Brand Activation
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 03 — Getty Image */}
+            <div className="grid gap-10 md:grid-cols-12 md:gap-12">
+              <div className="md:col-span-7">
+                <div className="relative aspect-[16/10] overflow-hidden border border-border">
+                  <img
+                    src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1600&q=80"
+                    alt="Getty Images popup studio professional photography"
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute left-4 top-4 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                    Photography · Popup Studio
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center md:col-span-5">
+                <div className="flex items-baseline gap-4">
+                  <span className="font-mono text-[11px] tracking-[0.2em] text-primary">03</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    Getty Images
+                  </span>
+                </div>
+                <h3 className="mt-6 font-display text-3xl font-semibold leading-[1.05] tracking-tight md:text-4xl">
+                  Popup Studio
+                </h3>
+                <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  Collaboration with <strong>Getty Images</strong> launched our new service: <strong>POPUP STUDIO</strong>. A portable shooting studio bringing professional photography quality to any location.
+                </p>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  Our professional cameramen — specialists in lighting and photography fundamentals — paired with high-quality devices deliver studio-quality photos to your hands.
+                </p>
+                <p className="mt-4 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                  Simple process, instant sharing, and quick print make POPUP STUDIO ideal for marketing and social network campaigns. The Getty Images event produced <strong>1,450 images</strong> shared to the internet within hours.
+                </p>
+                <div className="mt-8 flex items-center gap-6 border-t border-border pt-6">
+                  <div>
+                    <div className="font-display text-2xl font-semibold">1,450</div>
+                    <div className="eyebrow mt-1">Images produced</div>
+                  </div>
+                  <div>
+                    <div className="font-display text-2xl font-semibold">&lt; 3 hrs</div>
+                    <div className="eyebrow mt-1">Time to internet</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
