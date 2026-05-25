@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SpaceActivationRouteImport } from './routes/space-activation'
 import { Route as ProductServicesRouteImport } from './routes/product-services'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductServicesProductIdRouteImport } from './routes/product-services.$productId'
 
+const SpaceActivationRoute = SpaceActivationRouteImport.update({
+  id: '/space-activation',
+  path: '/space-activation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductServicesRoute = ProductServicesRouteImport.update({
   id: '/product-services',
   path: '/product-services',
@@ -33,34 +39,58 @@ const ProductServicesProductIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/product-services': typeof ProductServicesRouteWithChildren
+  '/space-activation': typeof SpaceActivationRoute
   '/product-services/$productId': typeof ProductServicesProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/product-services': typeof ProductServicesRouteWithChildren
+  '/space-activation': typeof SpaceActivationRoute
   '/product-services/$productId': typeof ProductServicesProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/product-services': typeof ProductServicesRouteWithChildren
+  '/space-activation': typeof SpaceActivationRoute
   '/product-services/$productId': typeof ProductServicesProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/product-services' | '/product-services/$productId'
+  fullPaths:
+    | '/'
+    | '/product-services'
+    | '/space-activation'
+    | '/product-services/$productId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/product-services' | '/product-services/$productId'
-  id: '__root__' | '/' | '/product-services' | '/product-services/$productId'
+  to:
+    | '/'
+    | '/product-services'
+    | '/space-activation'
+    | '/product-services/$productId'
+  id:
+    | '__root__'
+    | '/'
+    | '/product-services'
+    | '/space-activation'
+    | '/product-services/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ProductServicesRoute: typeof ProductServicesRouteWithChildren
+  SpaceActivationRoute: typeof SpaceActivationRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/space-activation': {
+      id: '/space-activation'
+      path: '/space-activation'
+      fullPath: '/space-activation'
+      preLoaderRoute: typeof SpaceActivationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product-services': {
       id: '/product-services'
       path: '/product-services'
@@ -100,7 +130,18 @@ const ProductServicesRouteWithChildren = ProductServicesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ProductServicesRoute: ProductServicesRouteWithChildren,
+  SpaceActivationRoute: SpaceActivationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
