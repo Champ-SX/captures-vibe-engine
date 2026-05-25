@@ -3,6 +3,7 @@ export type CaseStudy = {
   client: string;
   title: string;
   summary: string;
+  article: string;
   year: string;
   category: string;
   hero: string;
@@ -13,6 +14,7 @@ export type CaseStudy = {
   results: { label: string; value: string }[];
   gallery: string[];
 };
+
 
 const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1800&q=75`;
 
