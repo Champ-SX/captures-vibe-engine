@@ -106,14 +106,20 @@ function Index() {
               <p className="mt-8 max-w-lg text-base text-muted-foreground md:text-lg">
                 Custom-built event experiences and a modular library of 12 booth products. Designed for brand activations, retail moments, and cultural events.
               </p>
-              <div className="mt-8 flex flex-wrap gap-6">
-                <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">01 — Bespoke</div>
-                  <div className="mt-2 font-display text-lg">Custom Experience</div>
+              <div className="mt-10 flex flex-col gap-8">
+                <div className="border-l-2 border-primary pl-5">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">01 — Bespoke</div>
+                  <div className="mt-2 font-display text-xl font-medium">Custom Experience</div>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                    For agencies, organizers, and brand teams. Photo systems and audience interaction tools, configured around the campaign — deployed at brand launches, festivals, activations, and corporate events.
+                  </p>
                 </div>
-                <div>
+                <div className="border-l-2 border-border pl-5">
                   <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">02 — Library</div>
-                  <div className="mt-2 font-display text-lg">Legacy Photobooth · 12 products</div>
+                  <div className="mt-2 font-display text-xl font-medium">Ready-to-Go Photobooth</div>
+                  <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+                    Twelve proven booth formats — Mirror, 360 Video, AI Portrait, Multi-Camera, Open-Air, and more. Pre-engineered, field-tested, and ready to deploy. You pick the format; we handle build, logistics, and on-site operation.
+                  </p>
                 </div>
               </div>
               <Link
