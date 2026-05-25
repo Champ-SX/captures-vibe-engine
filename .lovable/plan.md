@@ -1,90 +1,55 @@
-# CAPTURES Website — Build Plan
+## Restructure "The System" into three asymmetric pillars
 
-A multi-page marketing site for CAPTURES by SIXSHEET. Dark-first editorial design, modular sections, reusable product/case-study templates, and a strategic secondary color system for section rhythm.
+Replace the current 2x2 equal grid in `src/routes/index.tsx` with three independently-styled pillar blocks, in priority order. Remove Case Studies from this section entirely (it stays as the existing "Featured work" section further down the page).
 
-## Design system (src/styles.css)
+### New section structure
 
-Tokens (oklch equivalents of brand hex):
-- `--background` charcoal `#231F20`
-- `--foreground` white
-- `--primary` lime `#DEFF4C` (CTAs, active states, signals — used sparingly)
-- `--accent-teal` `#193133` (workflow / system sections)
-- `--accent-yellow` `#F0F424` (creative output / merch — rare)
-- Light theme: white bg, near-black text, lime accents subtle
-- Typography: Inter Tight (body) + a bold display (Geist or General Sans via Google fonts fallback). Tight tracking, large display sizes, compact UI text.
-- Subtle grain overlay utility (SVG noise) for hero/section backgrounds
-- Sharp corners (radius ~2–6px), thin 1px borders, no glow/glass
+Section eyebrow stays `01 — The system`, but headline shifts to something operational like "Three pillars. One event experience platform." with a meta line "Product · Software · Activation".
 
-## Route structure (TanStack Start, separate files)
+Then three full-width, visually distinct blocks stacked vertically — not a grid. Each block has its own background tone, layout, and visual weight.
 
-```
-src/routes/
-  __root.tsx                       header + footer + grain overlay
-  index.tsx                        home (hero, what is CAPTURES, section index)
-  product-services.tsx             /product-services
-  product-services.$productId.tsx  /product-services/product-01 … 12
-  space-activation.tsx             /space-activation (with map)
-  case-studies.tsx                 /case-studies
-  case-studies.$slug.tsx           /case-studies/case-study-01 … 04
-  technology.tsx                   /technology
-```
+---
 
-CAPTURES BOOTH = external link in nav to `http://captures.photo/booth` + a preview section embedded on the home page.
+### Pillar 1 — Product & Services (primary, largest)
 
-Each route gets its own `head()` with title, description, og:title, og:description. Leaf product/case-study pages add og:image from their hero.
+- Full-bleed dark block on `--background` (charcoal), tallest block in the section.
+- Asymmetric two-column layout (≈60/40): left = oversized editorial typography, right = cinematic event photo.
+- Below the split, a horizontal modular preview strip showing 4–5 booth thumbnails pulled from `src/data/products.ts` (Mirror, 360 Video, AI Portrait, Multi-Camera, Open-Air), each a small image tile with monospace label, scroll-overflow on mobile.
+- Two sub-labels: "Custom Experience" and "Legacy Photobooth · 12 products".
+- Lime CTA → `/product-services`.
+- Strongest type scale (e.g. `text-6xl md:text-8xl`), tight tracking.
 
-## Shared components (src/components/)
+### Pillar 2 — CAPTURES BOOTH (SaaS, technical)
 
-- `SiteHeader` — sticky, compact, logo + 5 nav items, active link underline in lime
-- `SiteFooter` — minimal editorial footer with contact CTA
-- `GrainOverlay` — fixed SVG noise layer, low opacity
-- `SectionLabel` — small uppercase tag + index number (operational feel)
-- `EditorialHero` — reusable hero with eyebrow, large headline, supporting line, CTA
-- `ProductCard` — image, name, short desc, output type, "best for", arrow CTA
-- `CaseStudyCard` — large cinematic image card with title overlay
-- `TechModuleCard` — dashboard-styled card for technology modules
-- `LocationMap` — Leaflet + CARTO dark basemap (no Google styling), custom lime markers
-- `InquiryCTA` — reused on product/case study pages
-- `ProductTemplate` / `CaseStudyTemplate` — page layouts that take a data object
+- Narrower block on `--color-teal` background (reuse the existing teal section's tone) — clearly different surface from Pillar 1.
+- Layout: left column = description + "Open captures.photo/booth ↗" outline-lime CTA; right column = condensed dashboard preview grid (small module tiles like Dashboard / Queue / Prints / Gallery / Analytics with mono labels and thin lime dividers, more "UI chrome" feel than the current version).
+- Smaller headline scale than Pillar 1. Mono micro-labels everywhere ("v2.4", "uptime", "modules").
+- This replaces the existing standalone "CAPTURES BOOTH preview" section further down the page — fold it into the system section so it reads as pillar 2.
 
-## Page composition
+### Pillar 3 — Space Activation (lifestyle, venue)
 
-**Home (`/`)** — Hero (charcoal + grain), section index navigating the 5 areas, CAPTURES BOOTH preview block (teal), featured case study strip, contact CTA. Section background colors alternate charcoal → teal → charcoal → light → charcoal to give navigation rhythm.
+- Block with a lighter/warmer surface (use existing `--surface` or a subtle yellow-tinted band) to break from the teal above.
+- Layout: full-width lifestyle/venue photograph on the left (≈55%), right column copy block with description, revenue-share callout, and a lime arrow link → `/space-activation`.
+- More whitespace, airier padding, softer rhythm than the other two.
+- Small inline meta row: "Cafés · Retail · Lifestyle venues" in mono.
 
-**Product & Services** — Hero, "Custom Experience" long-form section (immersive event visuals with operational overlays), then "Legacy Photobooth" 12-card grid linking to detail pages.
+---
 
-**Product detail** — Reusable template driven by a data file (`src/data/products.ts`) with 12 entries: hero, overview, outputs, use cases, features, setup, branding, sample outputs grid, inquiry CTA.
+### Visual separation rules
 
-**Space Activation** — Hero, lifestyle-leaning content blocks (long-term installs, retail, café, revenue share), full-bleed interactive dark map section with sample location pins, venue gallery.
+- Each pillar gets a different background token (charcoal / teal / surface), no shared grid lines between them.
+- Vary vertical padding per pillar (Pillar 1 tallest, Pillar 2 medium, Pillar 3 medium-airy).
+- Each pillar has its own numeric index (`P1 / P2 / P3`) shown in the top-left as a mono label, replacing the old `01–04` grid numbering.
+- No 2x2 grid, no equal cards, no shared border-px hairlines between pillars.
 
-**Case Studies** — Editorial index of 4 large cinematic cards.
+### Removals
 
-**Case Study detail** — Reusable template (`src/data/caseStudies.ts`): hero, overview, challenge, guest journey, technology used, outputs, gallery, results, behind-the-scenes.
+- Remove Case Studies card from the system section (it remains as the existing "Featured work" section lower on the page — untouched).
+- Remove the separate standalone "CAPTURES BOOTH preview" section (its content is absorbed into Pillar 2).
+- Drop the "Four operational areas" meta label.
 
-**Technology** — Modular grid of 6 modules (Payment, Creative Print, GIF & Live Photo, Cloud Gallery, Analytics, Photo Merchandise), each a dashboard-style card with operational overlays. Teal section accents.
+### Files touched
 
-## Map (Space Activation)
-
-Use Leaflet + CARTO dark-matter tiles (free, no API key, matches identity). Custom lime SVG markers, minimal popups, disable default zoom controls, restyle attribution. Sample locations as a data array — easy to extend later.
-
-## Images
-
-Use Unsplash-hosted URLs for cinematic event photography placeholders (real-looking event photos, not stock-illustration). Document where to swap in real CAPTURES photography later. No AI 3D blobs, no glassmorphism.
-
-## Content
-
-Use the user's preferred voice: "Built for events.", "Designed for engagement.", "Simple to operate." Avoid buzzword vocabulary. Body copy short, operational.
-
-## Scope of this first build
-
-Ship all 5 top-level routes + product detail template (with 12 data entries, lighter placeholder copy) + 4 case study detail pages + technology modules + dark map. Polished but content placeholders are clearly written so they can be replaced by the CMS later. No backend/Cloud needed yet; inquiry CTAs link to `mailto:` for now (can be upgraded to a form + Cloud later).
-
-## Technical notes
-
-- TanStack Start file routing, `head()` per route, no hash anchors for major sections
-- `bun add leaflet react-leaflet @types/leaflet` for the map
-- Google Fonts via `<link>` in `__root.tsx` head
-- All colors in `src/styles.css` as oklch tokens; no hex in components
-- Reusable page templates driven by `src/data/*.ts` so 12 products / 4 case studies share one component each
-
-One clarification before I build: confirm you're OK with (a) Leaflet + CARTO dark tiles for the map (free, no key, matches the aesthetic) vs. wiring up Google Maps via the Lovable connector, and (b) `mailto:` inquiry buttons for now vs. enabling Lovable Cloud to capture form submissions. I'll default to Leaflet + mailto if you don't specify.
+- `src/routes/index.tsx` — rewrite the "SECTION INDEX" block as three pillar blocks; delete the standalone CAPTURES BOOTH section below it.
+- No new components required (keep it inline for editorial control); reuse `SectionLabel`, existing tokens, and product images already in `src/data/products.ts`.
+- No changes to routes, data, or other pages.
