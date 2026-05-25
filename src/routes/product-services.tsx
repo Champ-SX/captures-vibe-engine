@@ -23,11 +23,11 @@ function ProductServices() {
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
           <SectionLabel index="01">Product & Services</SectionLabel>
           <h1 className="mt-6 max-w-4xl text-5xl font-semibold tracking-tight md:text-7xl">
-            An engagement platform.<br />
-            <span className="text-muted-foreground">Not just a photobooth.</span>
+            Photobooth systems for every<br />
+            <span className="text-muted-foreground">format of event.</span>
           </h1>
           <p className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg">
-            Custom experiences and 12 booth products, designed and operated as one system.
+            A Custom Experience and a hardware catalogue engineered around how modern activations actually flow — from unattended retail to high-volume brand experiences.
           </p>
         </div>
       </section>
@@ -64,6 +64,8 @@ function ProductServices() {
                 ["Multi-camera systems", "Bullet-time, 360, and synchronised capture."],
                 ["Live displays", "Real-time gallery walls and stage feeds."],
                 ["Creative outputs", "Print, GIF, slide film, and keepsakes."],
+                ["Data and report", "Leverage insights for the next activation."],
+                ["Queue and Check-In", "Manage guest flow and on-site check-in."],
               ].map(([t, d]) => (
                 <div key={t} className="bg-background p-6">
                   <div className="font-display text-lg font-medium">{t}</div>
@@ -80,10 +82,7 @@ function ProductServices() {
         <div className="mx-auto max-w-[1400px] px-6 py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <SectionLabel index="02">Legacy Photobooth</SectionLabel>
-              <h2 className="mt-6 max-w-2xl text-3xl font-semibold tracking-tight md:text-5xl">
-                Twelve booths. One system.
-              </h2>
+              <SectionLabel index="02">Ready to Deploy Photobooth</SectionLabel>
             </div>
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">{products.length} products</span>
           </div>

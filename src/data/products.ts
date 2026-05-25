@@ -18,7 +18,7 @@ const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=c
 export const products: Product[] = [
   {
     id: "product-01",
-    name: "Mirror Booth",
+    name: "LCA",
     tagline: "Full-length mirror with touch interaction.",
     description: "A floor-standing mirror booth with built-in camera, animated touch prompts, and instant print output. Built for high-traffic activations.",
     output: "4x6 print · Digital",
@@ -32,7 +32,7 @@ export const products: Product[] = [
   },
   {
     id: "product-02",
-    name: "Open-Air Booth",
+    name: "PHOTOMOOV",
     tagline: "Compact open setup for high throughput.",
     description: "An open-air photo system with backdrop and ring light. Lightweight, modular, and built for fast guest cycles.",
     output: "GIF · 4x6 print",
@@ -46,7 +46,7 @@ export const products: Product[] = [
   },
   {
     id: "product-03",
-    name: "360 Video Booth",
+    name: "AUTO SNAP",
     tagline: "Slow-motion 360 capture for shareable content.",
     description: "A rotating arm captures the moment from every angle. Outputs a vertical slow-mo video, instantly delivered.",
     output: "Vertical MP4 · GIF",
@@ -60,7 +60,7 @@ export const products: Product[] = [
   },
   {
     id: "product-04",
-    name: "Print Station",
+    name: "STORYBOOTH",
     tagline: "Self-service print kiosk for guest content.",
     description: "Guests upload from their phone via QR and receive an instant branded print. No operator required.",
     output: "4x6 / 2x6 print",
@@ -74,7 +74,7 @@ export const products: Product[] = [
   },
   {
     id: "product-05",
-    name: "AI Portrait Studio",
+    name: "POPUP FILM SLIDE",
     tagline: "Generative portraits styled in real time.",
     description: "Capture a portrait and apply branded AI styles in seconds. Each guest leaves with a unique generated artwork.",
     output: "Digital · 4x6 print",
@@ -88,7 +88,7 @@ export const products: Product[] = [
   },
   {
     id: "product-06",
-    name: "Multi-Camera Array",
+    name: "POPUP TOP VIEW",
     tagline: "Bullet-time freeze frame from multiple angles.",
     description: "An array of synchronised cameras captures a single moment from every angle. Outputs a stitched cinematic clip.",
     output: "Vertical MP4",
@@ -102,7 +102,7 @@ export const products: Product[] = [
   },
   {
     id: "product-07",
-    name: "Roaming Booth",
+    name: "POPUP STUDIO",
     tagline: "Operator-led roaming photographer.",
     description: "A trained operator with a portable rig moves through the venue, capturing guests with instant digital + print delivery.",
     output: "Digital · 2x6 strip",
@@ -116,7 +116,7 @@ export const products: Product[] = [
   },
   {
     id: "product-08",
-    name: "Vintage Slide Booth",
+    name: "AI BOOTH",
     tagline: "Analogue slide film for collectible keepsakes.",
     description: "A film-based booth that produces real slide-film keepsakes. Limited capacity, premium output.",
     output: "Slide film keepsake",
@@ -130,7 +130,7 @@ export const products: Product[] = [
   },
   {
     id: "product-09",
-    name: "GIF Studio",
+    name: "BOX SHOT",
     tagline: "Animated capture optimised for social.",
     description: "A short-loop GIF booth optimised for instant sharing. Lightweight setup, branded outputs, fast cycles.",
     output: "GIF · MP4",
@@ -144,7 +144,7 @@ export const products: Product[] = [
   },
   {
     id: "product-10",
-    name: "Photo Merchandise Bar",
+    name: "SX TALLY",
     tagline: "Turn photos into keepsakes on the spot.",
     description: "An on-site merchandise station that prints guest photos into keychains, charms, and collectibles.",
     output: "Keychain · Charm · Magnet",
@@ -158,7 +158,7 @@ export const products: Product[] = [
   },
   {
     id: "product-11",
-    name: "Live Display Wall",
+    name: "SX PORTABLE",
     tagline: "Real-time gallery wall for live events.",
     description: "A large display synced to the booth, projecting guest content in real time. Adds spectacle and social proof.",
     output: "Live screen · Digital",
@@ -172,7 +172,7 @@ export const products: Product[] = [
   },
   {
     id: "product-12",
-    name: "Photoautomat Permanent",
+    name: "SX STANDARD",
     tagline: "Long-term coin-style booth for venues.",
     description: "A permanent or pop-up booth installed in cafés, retail, and lifestyle spaces. Revenue-share model available.",
     output: "Strip print · Digital",
