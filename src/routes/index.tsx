@@ -81,9 +81,9 @@ function Index() {
               Product · Software · Activation
             </span>
           </div>
-          <h2 className="mt-6 max-w-3xl text-3xl font-semibold tracking-tight md:text-5xl">
-            Three pillars.<br />
-            <span className="text-muted-foreground">One event experience platform.</span>
+          <h2 className="mt-6 max-w-4xl text-3xl font-semibold tracking-tight md:text-5xl">
+            Our Product & Services<br />
+            <span className="text-muted-foreground">serve your event experience.</span>
           </h2>
         </div>
       </section>
