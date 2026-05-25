@@ -73,7 +73,7 @@ function ProductDetail() {
         <div className="mx-auto max-w-[1400px] px-6 py-24">
           <SectionLabel index="02">Features</SectionLabel>
           <div className="mt-12 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
-            {product.features.map((f, i) => (
+            {product.features.map((f: string, i: number) => (
               <div key={f} className="bg-[color:var(--color-teal)] p-8">
                 <div className="font-mono text-[10px] tracking-[0.2em] text-primary">{String(i + 1).padStart(2, "0")}</div>
                 <div className="mt-4 font-display text-xl font-medium">{f}</div>
@@ -89,7 +89,7 @@ function ProductDetail() {
           <div className="bg-background p-10 md:p-16">
             <SectionLabel index="03">Use cases</SectionLabel>
             <ul className="mt-8 space-y-3">
-              {product.useCases.map((u) => (
+              {product.useCases.map((u: string) => (
                 <li key={u} className="flex items-center gap-3 border-b border-border py-3">
                   <span className="h-1.5 w-1.5 bg-primary" />
                   <span className="text-base">{u}</span>
@@ -109,7 +109,7 @@ function ProductDetail() {
         <div className="mx-auto max-w-[1400px] px-6 py-24">
           <SectionLabel index="05">Sample outputs</SectionLabel>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {product.samples.map((s, i) => (
+            {product.samples.map((s: string, i: number) => (
               <div key={i} className="aspect-[4/5] overflow-hidden border border-border bg-surface">
                 <img src={s} alt="" className="h-full w-full object-cover" />
               </div>
