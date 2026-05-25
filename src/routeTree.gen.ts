@@ -14,6 +14,7 @@ import { Route as ProductServicesRouteImport } from './routes/product-services'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductServicesProductIdRouteImport } from './routes/product-services.$productId'
+import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
 
 const SpaceActivationRoute = SpaceActivationRouteImport.update({
   id: '/space-activation',
@@ -41,27 +42,35 @@ const ProductServicesProductIdRoute =
     path: '/$productId',
     getParentRoute: () => ProductServicesRoute,
   } as any)
+const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CaseStudiesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/case-studies': typeof CaseStudiesRoute
+  '/case-studies': typeof CaseStudiesRouteWithChildren
   '/product-services': typeof ProductServicesRouteWithChildren
   '/space-activation': typeof SpaceActivationRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/product-services/$productId': typeof ProductServicesProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/case-studies': typeof CaseStudiesRoute
+  '/case-studies': typeof CaseStudiesRouteWithChildren
   '/product-services': typeof ProductServicesRouteWithChildren
   '/space-activation': typeof SpaceActivationRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/product-services/$productId': typeof ProductServicesProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/case-studies': typeof CaseStudiesRoute
+  '/case-studies': typeof CaseStudiesRouteWithChildren
   '/product-services': typeof ProductServicesRouteWithChildren
   '/space-activation': typeof SpaceActivationRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/product-services/$productId': typeof ProductServicesProductIdRoute
 }
 export interface FileRouteTypes {
@@ -71,6 +80,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/product-services'
     | '/space-activation'
+    | '/case-studies/$slug'
     | '/product-services/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -78,6 +88,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/product-services'
     | '/space-activation'
+    | '/case-studies/$slug'
     | '/product-services/$productId'
   id:
     | '__root__'
@@ -85,12 +96,13 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/product-services'
     | '/space-activation'
+    | '/case-studies/$slug'
     | '/product-services/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CaseStudiesRoute: typeof CaseStudiesRoute
+  CaseStudiesRoute: typeof CaseStudiesRouteWithChildren
   ProductServicesRoute: typeof ProductServicesRouteWithChildren
   SpaceActivationRoute: typeof SpaceActivationRoute
 }
@@ -132,8 +144,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductServicesProductIdRouteImport
       parentRoute: typeof ProductServicesRoute
     }
+    '/case-studies/$slug': {
+      id: '/case-studies/$slug'
+      path: '/$slug'
+      fullPath: '/case-studies/$slug'
+      preLoaderRoute: typeof CaseStudiesSlugRouteImport
+      parentRoute: typeof CaseStudiesRoute
+    }
   }
 }
+
+interface CaseStudiesRouteChildren {
+  CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
+}
+
+const CaseStudiesRouteChildren: CaseStudiesRouteChildren = {
+  CaseStudiesSlugRoute: CaseStudiesSlugRoute,
+}
+
+const CaseStudiesRouteWithChildren = CaseStudiesRoute._addFileChildren(
+  CaseStudiesRouteChildren,
+)
 
 interface ProductServicesRouteChildren {
   ProductServicesProductIdRoute: typeof ProductServicesProductIdRoute
@@ -149,7 +180,7 @@ const ProductServicesRouteWithChildren = ProductServicesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CaseStudiesRoute: CaseStudiesRoute,
+  CaseStudiesRoute: CaseStudiesRouteWithChildren,
   ProductServicesRoute: ProductServicesRouteWithChildren,
   SpaceActivationRoute: SpaceActivationRoute,
 }
