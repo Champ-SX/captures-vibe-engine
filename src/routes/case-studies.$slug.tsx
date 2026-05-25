@@ -80,11 +80,11 @@ function CaseStudyDetail() {
       <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
         <div className="mx-auto grid max-w-[1400px] gap-px bg-border md:grid-cols-2">
           <div className="bg-[color:var(--color-teal)] p-10 md:p-16">
-            <SectionLabel index="02">The challenge</SectionLabel>
+            <SectionLabel index="03">The challenge</SectionLabel>
             <p className="mt-6 text-lg text-foreground md:text-xl">{cs.challenge}</p>
           </div>
           <div className="bg-[color:var(--color-teal)] p-10 md:p-16">
-            <SectionLabel index="03">Guest journey</SectionLabel>
+            <SectionLabel index="04">Guest journey</SectionLabel>
             <ol className="mt-6 space-y-4">
               {cs.guestJourney.map((step: string, i: number) => (
                 <li key={i} className="flex gap-4 border-b border-border pb-4">
@@ -101,7 +101,7 @@ function CaseStudyDetail() {
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 md:grid-cols-2">
           <div>
-            <SectionLabel index="04">Technology</SectionLabel>
+            <SectionLabel index="05">Technology</SectionLabel>
             <div className="mt-6 flex flex-wrap gap-2">
               {cs.technology.map((t: string) => (
                 <span key={t} className="border border-border px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em]">
@@ -111,7 +111,7 @@ function CaseStudyDetail() {
             </div>
           </div>
           <div>
-            <SectionLabel index="05">Outputs</SectionLabel>
+            <SectionLabel index="06">Outputs</SectionLabel>
             <ul className="mt-6 space-y-3">
               {cs.outputs.map((o: string) => (
                 <li key={o} className="flex items-center gap-3 border-b border-border py-3">
@@ -127,7 +127,7 @@ function CaseStudyDetail() {
       {/* RESULTS */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-24">
-          <SectionLabel index="06">Results</SectionLabel>
+          <SectionLabel index="07">Results</SectionLabel>
           <div className="mt-12 grid gap-px bg-border md:grid-cols-3">
             {cs.results.map((r: { label: string; value: string }) => (
               <div key={r.label} className="bg-background p-10">
@@ -142,7 +142,7 @@ function CaseStudyDetail() {
       {/* GALLERY */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-24">
-          <SectionLabel index="07">Behind the scenes</SectionLabel>
+          <SectionLabel index="08">Behind the scenes</SectionLabel>
           <div className="mt-12 grid gap-4 md:grid-cols-2">
             {cs.gallery.map((g: string, i: number) => (
               <div key={i} className={`overflow-hidden border border-border bg-surface ${i === 0 ? "md:col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
