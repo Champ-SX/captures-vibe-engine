@@ -20,14 +20,14 @@ const modules = [
     n: "01",
     title: "Payment System",
     desc: "Flexible payment workflows for permanent installs and paid activations.",
-    items: ["QR payment", "Credit card", "Digital wallets", "On-site payment flow"],
+    items: ["QR payment", "Credit card", "Digital money"],
     tone: "teal",
   },
   {
     n: "02",
-    title: "Creative Print",
+    title: "Creative PhotoPrint",
     desc: "Specialty print outputs that go beyond standard 4x6 strips.",
-    items: ["Heat transfer", "Inkjet", "Film slide", "Custom formats"],
+    items: ["Heat transfer", "Inkjet", "FilmSlide"],
     tone: "dark",
   },
   {
@@ -46,7 +46,7 @@ const modules = [
   },
   {
     n: "05",
-    title: "Data Analytics",
+    title: "Data Analytics / Report",
     desc: "Operational and engagement reporting after every activation.",
     items: ["Guest insights", "Usage tracking", "Engagement reports", "Operational analytics"],
     tone: "dark",
@@ -67,11 +67,12 @@ function Technology() {
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
           <SectionLabel index="01">Technology</SectionLabel>
           <h1 className="mt-6 max-w-4xl text-5xl font-semibold tracking-tight md:text-7xl">
-            Modules built for<br />
-            <span className="text-primary">live experiences.</span>
+            A flexible technology stack<br />
+            <span className="text-primary">built for modern event</span><br />
+            experiences and activations.
           </h1>
           <p className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg">
-            CAPTURES is built as a stack of operational modules. Use the ones you need — combine them for the activation.
+            Photo Merchandise
           </p>
         </div>
       </section>
