@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as SpaceActivationRouteImport } from './routes/space-activation'
 import { Route as ProductServicesRouteImport } from './routes/product-services'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
@@ -16,6 +17,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductServicesProductIdRouteImport } from './routes/product-services.$productId'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
 
+const TechnologyRoute = TechnologyRouteImport.update({
+  id: '/technology',
+  path: '/technology',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SpaceActivationRoute = SpaceActivationRouteImport.update({
   id: '/space-activation',
   path: '/space-activation',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/product-services': typeof ProductServicesRouteWithChildren
   '/space-activation': typeof SpaceActivationRoute
+  '/technology': typeof TechnologyRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/product-services/$productId': typeof ProductServicesProductIdRoute
 }
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/product-services': typeof ProductServicesRouteWithChildren
   '/space-activation': typeof SpaceActivationRoute
+  '/technology': typeof TechnologyRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/product-services/$productId': typeof ProductServicesProductIdRoute
 }
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/case-studies': typeof CaseStudiesRouteWithChildren
   '/product-services': typeof ProductServicesRouteWithChildren
   '/space-activation': typeof SpaceActivationRoute
+  '/technology': typeof TechnologyRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/product-services/$productId': typeof ProductServicesProductIdRoute
 }
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/product-services'
     | '/space-activation'
+    | '/technology'
     | '/case-studies/$slug'
     | '/product-services/$productId'
   fileRoutesByTo: FileRoutesByTo
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/product-services'
     | '/space-activation'
+    | '/technology'
     | '/case-studies/$slug'
     | '/product-services/$productId'
   id:
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/product-services'
     | '/space-activation'
+    | '/technology'
     | '/case-studies/$slug'
     | '/product-services/$productId'
   fileRoutesById: FileRoutesById
@@ -105,10 +117,18 @@ export interface RootRouteChildren {
   CaseStudiesRoute: typeof CaseStudiesRouteWithChildren
   ProductServicesRoute: typeof ProductServicesRouteWithChildren
   SpaceActivationRoute: typeof SpaceActivationRoute
+  TechnologyRoute: typeof TechnologyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/technology': {
+      id: '/technology'
+      path: '/technology'
+      fullPath: '/technology'
+      preLoaderRoute: typeof TechnologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/space-activation': {
       id: '/space-activation'
       path: '/space-activation'
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesRoute: CaseStudiesRouteWithChildren,
   ProductServicesRoute: ProductServicesRouteWithChildren,
   SpaceActivationRoute: SpaceActivationRoute,
+  TechnologyRoute: TechnologyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
