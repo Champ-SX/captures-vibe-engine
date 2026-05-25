@@ -311,7 +311,7 @@ function Index() {
 
           <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-10">
             {/* 01 — Estee Lauder */}
-            <Link to="/case-studies" className="group block">
+            <Link to="/case-studies/$slug" params={{ slug: "estee-lauder-pure-color-desire" }} className="group block">
               <div className="relative aspect-[16/11] overflow-hidden border border-border">
                 <img
                   src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80"
@@ -334,7 +334,7 @@ function Index() {
             </Link>
 
             {/* 02 — Cartier */}
-            <Link to="/case-studies" className="group block">
+            <Link to="/case-studies/$slug" params={{ slug: "cartier-precious-garage" }} className="group block">
               <div className="relative aspect-[16/11] overflow-hidden border border-border">
                 <img
                   src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1600&q=80"
