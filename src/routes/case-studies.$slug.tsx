@@ -64,6 +64,18 @@ function CaseStudyDetail() {
         </div>
       </section>
 
+      {/* FULL ARTICLE */}
+      <section className="border-b border-border">
+        <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 md:grid-cols-[1fr_2fr]">
+          <SectionLabel index="02">Read case study</SectionLabel>
+          <div className="space-y-6 text-lg text-muted-foreground md:text-xl">
+            {cs.article.split("\n\n").map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CHALLENGE + JOURNEY */}
       <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
         <div className="mx-auto grid max-w-[1400px] gap-px bg-border md:grid-cols-2">
