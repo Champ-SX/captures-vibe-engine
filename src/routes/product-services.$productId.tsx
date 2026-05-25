@@ -1,0 +1,146 @@
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { SectionLabel } from "@/components/SectionLabel";
+import { products } from "@/data/products";
+
+export const Route = createFileRoute("/product-services/$productId")({
+  loader: ({ params }) => {
+    const product = products.find((p) => p.id === params.productId);
+    if (!product) throw notFound();
+    return { product };
+  },
+  head: ({ loaderData }) => {
+    const p = loaderData?.product;
+    const title = p ? `${p.name} — CAPTURES` : "Product — CAPTURES";
+    const desc = p?.description ?? "CAPTURES booth product";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: desc },
+        { property: "og:title", content: title },
+        { property: "og:description", content: desc },
+        ...(p ? [{ property: "og:image", content: p.image }] : []),
+      ],
+    };
+  },
+  notFoundComponent: () => (
+    <div className="mx-auto max-w-3xl px-6 py-32 text-center">
+      <h1 className="text-3xl font-semibold">Product not found</h1>
+      <Link to="/product-services" className="mt-6 inline-block text-primary">← Back to products</Link>
+    </div>
+  ),
+  component: ProductDetail,
+});
+
+function ProductDetail() {
+  const { product } = Route.useLoaderData();
+
+  return (
+    <>
+      {/* HERO */}
+      <section className="relative border-b border-border">
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface">
+          <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+        </div>
+        <div className="mx-auto -mt-32 max-w-[1400px] px-6 pb-16 md:-mt-48">
+          <Link to="/product-services" className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-primary">
+            ← All products
+          </Link>
+          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight md:text-7xl">{product.name}</h1>
+          <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">{product.tagline}</p>
+        </div>
+      </section>
+
+      {/* OVERVIEW */}
+      <section className="border-b border-border">
+        <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 md:grid-cols-[1fr_2fr]">
+          <div>
+            <SectionLabel index="01">Overview</SectionLabel>
+          </div>
+          <div>
+            <p className="text-lg text-muted-foreground md:text-xl">{product.description}</p>
+            <div className="mt-12 grid gap-px bg-border sm:grid-cols-3">
+              <Spec label="Output" value={product.output} />
+              <Spec label="Setup" value={product.setup} />
+              <Spec label="Best for" value={product.bestFor} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
+        <div className="mx-auto max-w-[1400px] px-6 py-24">
+          <SectionLabel index="02">Features</SectionLabel>
+          <div className="mt-12 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
+            {product.features.map((f, i) => (
+              <div key={f} className="bg-[color:var(--color-teal)] p-8">
+                <div className="font-mono text-[10px] tracking-[0.2em] text-primary">{String(i + 1).padStart(2, "0")}</div>
+                <div className="mt-4 font-display text-xl font-medium">{f}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* USE CASES + BRANDING */}
+      <section className="border-b border-border">
+        <div className="mx-auto grid max-w-[1400px] gap-px bg-border px-6 py-24 md:grid-cols-2 md:px-0">
+          <div className="bg-background p-10 md:p-16">
+            <SectionLabel index="03">Use cases</SectionLabel>
+            <ul className="mt-8 space-y-3">
+              {product.useCases.map((u) => (
+                <li key={u} className="flex items-center gap-3 border-b border-border py-3">
+                  <span className="h-1.5 w-1.5 bg-primary" />
+                  <span className="text-base">{u}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-background p-10 md:p-16">
+            <SectionLabel index="04">Branding</SectionLabel>
+            <p className="mt-8 text-base text-muted-foreground md:text-lg">{product.branding}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* SAMPLES */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-[1400px] px-6 py-24">
+          <SectionLabel index="05">Sample outputs</SectionLabel>
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {product.samples.map((s, i) => (
+              <div key={i} className="aspect-[4/5] overflow-hidden border border-border bg-surface">
+                <img src={s} alt="" className="h-full w-full object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-b border-border bg-background">
+        <div className="mx-auto max-w-[1400px] px-6 py-28 text-center">
+          <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
+            Bring {product.name} to your next event.
+          </h2>
+          <a
+            href={`mailto:hello@captures.photo?subject=${encodeURIComponent(product.name + " inquiry")}`}
+            className="mt-8 inline-block bg-primary px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground"
+          >
+            Request a quote →
+          </a>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Spec({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="bg-background p-6">
+      <div className="eyebrow">{label}</div>
+      <div className="mt-3 font-display text-base font-medium">{value}</div>
+    </div>
+  );
+}
