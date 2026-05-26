@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { caseStudies } from "@/data/caseStudies";
-import { products } from "@/data/products";
+import { products, type Product } from "@/data/products";
 
 export const Route = createFileRoute("/")({
   head: () => ({
