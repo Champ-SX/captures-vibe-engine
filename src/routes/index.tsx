@@ -5,6 +5,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { caseStudies } from "@/data/caseStudies";
 import { products, type Product } from "@/data/products";
 import saas01 from "@/assets/saas/saas-01.png";
+import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,10 +32,9 @@ function Index() {
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-border">
         <div
-          className="absolute inset-0 z-0 opacity-30"
+          className="absolute inset-0 z-0 opacity-60"
           style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=2000&q=70)",
+            backgroundImage: `url(${heroKiehls})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
