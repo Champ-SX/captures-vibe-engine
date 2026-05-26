@@ -20,6 +20,11 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [stripProducts, setStripProducts] = useState<Product[]>(() => products.slice(0, 5));
+  useEffect(() => {
+    const shuffled = [...products].sort(() => Math.random() - 0.5).slice(0, 5);
+    setStripProducts(shuffled);
+  }, []);
   return (
     <>
       {/* HERO */}
