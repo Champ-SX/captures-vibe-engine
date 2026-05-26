@@ -4,6 +4,16 @@ import { useEffect, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { caseStudies } from "@/data/caseStudies";
 import { products, type Product } from "@/data/products";
+import saas01 from "@/assets/saas/saas-01.png";
+import saas02 from "@/assets/saas/saas-02.png";
+import saas03 from "@/assets/saas/saas-03.png";
+import saas04 from "@/assets/saas/saas-04.png";
+import saas05 from "@/assets/saas/saas-05.png";
+import saas06 from "@/assets/saas/saas-06.png";
+import saas07 from "@/assets/saas/saas-07.png";
+import saas08 from "@/assets/saas/saas-08.png";
+
+const saasShots = [saas01, saas02, saas03, saas04, saas05, saas06, saas07, saas08];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -251,6 +261,33 @@ function Index() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* App screenshots */}
+          <div className="mt-16">
+            <div className="flex items-baseline justify-between">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Inside the app
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                {saasShots.length} screens
+              </span>
+            </div>
+            <div className="mt-6 grid grid-cols-2 gap-3 md:grid-cols-4">
+              {saasShots.map((src, i) => (
+                <div
+                  key={i}
+                  className="aspect-[9/16] overflow-hidden border border-border/50 bg-background/30"
+                >
+                  <img
+                    src={src}
+                    alt={`CAPTURES BOOTH app screen ${i + 1}`}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
