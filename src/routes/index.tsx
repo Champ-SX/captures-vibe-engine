@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { caseStudies } from "@/data/caseStudies";
 import { products, type Product } from "@/data/products";
-import saas01 from "@/assets/saas/saas-01.png";
 import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
 
 export const Route = createFileRoute("/")({
@@ -203,15 +202,8 @@ function Index() {
       >
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-12">
-            <div className="relative overflow-hidden md:col-span-5">
-              <img
-                src={saas01}
-                alt="CAPTURES BOOTH app"
-                className="absolute inset-0 z-0 h-full w-full object-cover opacity-25"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 z-0 bg-gradient-to-br from-black/85 via-black/70 to-black/90" />
-              <div className="relative z-10 p-6 md:p-8">
+            <div className="md:col-span-5">
+              <div>
               <div className="flex items-baseline gap-4">
                 <span className="font-mono text-[11px] tracking-[0.2em] text-primary">P2</span>
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
