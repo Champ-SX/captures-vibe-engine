@@ -1,6 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionLabel } from "@/components/SectionLabel";
 import { LocationMap } from "@/components/LocationMap";
+import heroImg from "@/assets/space-activation/hero.jpg";
+import cafeCoincidence from "@/assets/space-activation/cafe-coincidence.jpg";
+import rkfCafe from "@/assets/space-activation/rkf-cafe.jpg";
+import templeImg from "@/assets/space-activation/temple.jpg";
 
 export const Route = createFileRoute("/space-activation")({
   head: () => ({
@@ -48,7 +52,7 @@ function SpaceActivation() {
           </div>
           <div className="relative aspect-[4/5] overflow-hidden border border-border bg-surface">
             <img
-              src="https://images.unsplash.com/photo-1519222970733-f546218fa6d7?auto=format&fit=crop&w=1400&q=80"
+              src={heroImg}
               alt="Lifestyle space activation"
               className="h-full w-full object-cover"
             />
@@ -101,12 +105,12 @@ function SpaceActivation() {
           <SectionLabel index="04">In the wild</SectionLabel>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {[
-              "photo-1604881991720-f91add269bed",
-              "photo-1519222970733-f546218fa6d7",
-              "photo-1492684223066-81342ee5ff30",
-            ].map((id) => (
-              <div key={id} className="aspect-square overflow-hidden border border-border bg-surface">
-                <img src={`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=70`} alt="" className="h-full w-full object-cover" />
+              { src: cafeCoincidence, alt: "co—incidence photoautomat at café entrance" },
+              { src: rkfCafe, alt: "Rubber Killer photoautomat in RK Café" },
+              { src: templeImg, alt: "Phannapast photoautomat at Chinese temple" },
+            ].map((img) => (
+              <div key={img.alt} className="aspect-square overflow-hidden border border-border bg-surface">
+                <img src={img.src} alt={img.alt} className="h-full w-full object-cover" />
               </div>
             ))}
           </div>
