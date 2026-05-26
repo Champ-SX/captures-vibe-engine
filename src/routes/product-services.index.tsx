@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionLabel } from "@/components/SectionLabel";
 import { products } from "@/data/products";
 
-export const Route = createFileRoute("/product-services")({
+export const Route = createFileRoute("/product-services/")({
   head: () => ({
     meta: [
       { title: "Product & Services — CAPTURES" },
