@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { caseStudies } from "@/data/caseStudies";
-import { products } from "@/data/products";
+import { products, type Product } from "@/data/products";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -19,6 +20,11 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [stripProducts, setStripProducts] = useState<Product[]>(() => products.slice(0, 5));
+  useEffect(() => {
+    const shuffled = [...products].sort(() => Math.random() - 0.5).slice(0, 5);
+    setStripProducts(shuffled);
+  }, []);
   return (
     <>
       {/* HERO */}
@@ -146,9 +152,7 @@ function Index() {
           {/* Modular product strip */}
           <div className="mt-16 -mx-6 overflow-x-auto px-6">
             <div className="flex min-w-max gap-px bg-border">
-              {products
-                .filter((p) => ["product-01", "product-03", "product-05", "product-06", "product-02"].includes(p.id))
-                .map((p) => (
+              {stripProducts.map((p) => (
                   <Link
                     key={p.id}
                     to="/product-services/$productId"
