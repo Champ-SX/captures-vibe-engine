@@ -152,9 +152,7 @@ function Index() {
           {/* Modular product strip */}
           <div className="mt-16 -mx-6 overflow-x-auto px-6">
             <div className="flex min-w-max gap-px bg-border">
-              {products
-                .filter((p) => ["product-01", "product-03", "product-05", "product-06", "product-02"].includes(p.id))
-                .map((p) => (
+              {stripProducts.map((p) => (
                   <Link
                     key={p.id}
                     to="/product-services/$productId"
