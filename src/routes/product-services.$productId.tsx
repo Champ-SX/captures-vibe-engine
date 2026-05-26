@@ -40,13 +40,17 @@ function ProductDetail() {
       <section className="relative border-b border-border">
         <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface">
           <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-16">
+            <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-white drop-shadow-lg md:text-6xl lg:text-7xl">
+              {product.name}
+            </h1>
+          </div>
         </div>
-        <div className="mx-auto -mt-32 max-w-[1400px] px-6 pb-16 md:-mt-48">
+        <div className="mx-auto max-w-[1400px] px-6 py-12">
           <Link to="/product-services" className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-primary">
             ← All products
           </Link>
-          <h1 className="mt-4 max-w-4xl text-4xl font-semibold tracking-tight md:text-7xl">{product.name}</h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">{product.tagline}</p>
         </div>
       </section>
