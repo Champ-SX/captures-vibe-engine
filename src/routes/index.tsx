@@ -193,7 +193,14 @@ function Index() {
       </section>
 
       {/* PILLAR 2 — CAPTURES BOOTH (SaaS) */}
-      <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
+      <section
+        className="relative overflow-hidden border-b border-border bg-black"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse 60% 50% at 20% 30%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 70%), linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          backgroundSize: "auto, 48px 48px, 48px 48px",
+        }}
+      >
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-12">
             <div className="relative overflow-hidden md:col-span-5">
@@ -203,7 +210,7 @@ function Index() {
                 className="absolute inset-0 z-0 h-full w-full object-cover opacity-25"
                 loading="lazy"
               />
-              <div className="absolute inset-0 z-0 bg-gradient-to-br from-[color:var(--color-teal)]/85 via-[color:var(--color-teal)]/70 to-[color:var(--color-teal)]/90" />
+              <div className="absolute inset-0 z-0 bg-gradient-to-br from-black/85 via-black/70 to-black/90" />
               <div className="relative z-10 p-6 md:p-8">
               <div className="flex items-baseline gap-4">
                 <span className="font-mono text-[11px] tracking-[0.2em] text-primary">P2</span>
