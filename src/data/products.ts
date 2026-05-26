@@ -15,6 +15,14 @@ export type Product = {
 
 const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&q=70`;
 
+import boxShotMain from "@/assets/box-shot/booth-main.jpg";
+import boxShotSide from "@/assets/box-shot/booth-side.jpg";
+import boxShotSignage from "@/assets/box-shot/booth-signage.jpg";
+import boxShotInterior from "@/assets/box-shot/booth-interior.jpg";
+import boxShotPrints from "@/assets/box-shot/prints.jpg";
+import boxShotStrip from "@/assets/box-shot/strip.jpg";
+import boxShotGrid from "@/assets/box-shot/grid.jpg";
+
 export const products: Product[] = [
   {
     id: "product-01",
@@ -135,12 +143,12 @@ export const products: Product[] = [
     description: "Compact vertical-view photoautomat designed to create framed \"inside-the-box\" compositions with visible booth edges.",
     output: "GIF · MP4",
     bestFor: "Artistic compositions, social content, compact venues",
-    image: img("photo-1496024840928-4c417adf211d"),
+    image: boxShotMain,
     features: ["3-frame GIF capture", "Branded loop", "Instant QR delivery", "Live screen"],
     setup: "1.5m x 1.5m · 110/220V · 20 min install",
     branding: "Loop overlay, frame, sharing screen",
     useCases: ["Artistic compositions", "Social content", "Compact venue installations", "Editorial-style captures"],
-    samples: [img("photo-1496024840928-4c417adf211d"), img("photo-1493225457124-a3eb161ffa5f"), img("photo-1514525253161-7a46d19cd819")],
+    samples: [boxShotSignage, boxShotSide, boxShotInterior, boxShotPrints, boxShotStrip, boxShotGrid],
   },
   {
     id: "product-10",
