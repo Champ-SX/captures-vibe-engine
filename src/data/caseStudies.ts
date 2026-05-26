@@ -16,10 +16,6 @@ export type CaseStudy = {
 };
 
 
-import esteeLauderImg from "@/assets/case-studies/estee-lauder.jpg";
-import cartierImg from "@/assets/case-studies/cartier.jpg";
-import gettyImagesImg from "@/assets/case-studies/getty-images.jpg";
-
 import el1 from "@/assets/case-studies/estee-lauder/001-7-2.jpg";
 import el2 from "@/assets/case-studies/estee-lauder/002-7-2.jpg";
 import el3 from "@/assets/case-studies/estee-lauder/003-7-2-1.jpg";
@@ -51,7 +47,7 @@ export const caseStudies: CaseStudy[] = [
     article: "Collaborating with “ESTEE LAUDER” for a new “Pure Color Desire” lipstick collection product launching, happening at The saint regis hotel, Bangkok.\n\nWe created a “cinematic scene” feature of our VIDEOBOOTH that shooting a small video clip with a scene style like movie or music video. A fashion video this time expose a modelish in every girl.\n\nVIDEOBOOTH is the lastest marketing product that powerful and able to speak brand concept and also individually generate by brands’ customers.\n\nIt supports today’s social network and eases to share on Facebook, Instagram, tiktok and etc.\n\nThis event invited beauty bloggers and influencers to create contents and share to their channels. We analyzed the #hashtag for this event and it produced 2,753 posts for this opening event.",
     year: "2024",
     category: "Brand launch",
-    hero: esteeLauderImg,
+    hero: el1,
     challenge: "Launch the new Pure Color Desire lipstick collection at The St. Regis Bangkok with a content moment beauty bloggers and influencers would actually want to post — and let the brand concept speak through every guest-generated clip.",
     guestJourney: [
       "Bloggers and influencers checked in at the VIDEOBOOTH stage.",
@@ -76,7 +72,7 @@ export const caseStudies: CaseStudy[] = [
     article: "We had another proud opportunity to work with “Cartier Precious Garage” with brand Cartier. The event organized in the center of Bangkok city at Siam Paragon. During the gorgeous event allows Thai Cartier fans to experience a fabulous photo setting.\n\nCreating a scene for the customer to stand in the center of the glittering golden container results in impressive physical printing photos and digital GIF file. While S/X massively generated 4,526 downloaded files and 4,500 prints.",
     year: "2024",
     category: "Retail experience",
-    hero: cartierImg,
+    hero: ca1,
     challenge: "Give Thai Cartier fans a fabulous, on-brand photo moment in the center of Bangkok — premium enough to match the house, simple enough to deliver instantly at retail scale.",
     guestJourney: [
       "Guests entered the glittering golden container at Siam Paragon.",
@@ -101,7 +97,7 @@ export const caseStudies: CaseStudy[] = [
     article: "Collaboration work with Getty Image brought us to start our new service called POPUP STUDIO. Setting shooting studio to our customer and experience quality photo from anywhere. With our professional cameraman which specialist in lighting and photography fundamental and high-quality devices deliver the studio-quality photos to your hands.\n\nBy its simple process, instant sharing and quick print make POPUP STUDIO the right service for marketing especially for nowadays social network and digital marketing.\n\nThe Getty Image event with S/X produced 1,450 images and share to the internet within a few hours.",
     year: "2024",
     category: "Studio service",
-    hero: gettyImagesImg,
+    hero: gi1,
     challenge: "Bring studio-grade photography out of the studio — so brands and customers can get the quality they expect for social and digital marketing, anywhere the event happens.",
     guestJourney: [
       "A professional cameraman greeted each guest on-site.",
