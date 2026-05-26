@@ -5,6 +5,8 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { caseStudies } from "@/data/caseStudies";
 import { products, type Product } from "@/data/products";
 import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
+import homeProductServices from "@/assets/home/home-product-services.jpg";
+import homeSpaceActivation from "@/assets/home/home-space-activation.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -138,8 +140,8 @@ function Index() {
             <div className="md:col-span-2">
               <div className="relative aspect-[3/4] overflow-hidden border border-border bg-surface">
                 <img
-                  src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=70"
-                  alt="Cinematic event capture"
+                  src={homeProductServices}
+                  alt="CAPTURES Photo Booth installation"
                   className="h-full w-full object-cover grayscale"
                 />
                 <div className="absolute left-3 top-3 bg-background/85 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-primary">
@@ -273,8 +275,8 @@ function Index() {
             <div className="md:col-span-7">
               <div className="relative aspect-[16/10] overflow-hidden border border-border">
                 <img
-                  src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=1600&q=70"
-                  alt="Photoautomat in a venue space"
+                  src={homeSpaceActivation}
+                  alt="Fotoautomat space activation"
                   className="h-full w-full object-cover grayscale"
                 />
                 <div className="absolute bottom-3 left-3 bg-background/85 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.2em] text-primary">
