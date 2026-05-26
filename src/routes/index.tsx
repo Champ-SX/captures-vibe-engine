@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { caseStudies } from "@/data/caseStudies";
 import { products, type Product } from "@/data/products";
-import saas01 from "@/assets/saas/saas-01.png";
 import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
 
 export const Route = createFileRoute("/")({
