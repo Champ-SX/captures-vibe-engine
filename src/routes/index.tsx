@@ -196,7 +196,15 @@ function Index() {
       <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
         <div className="mx-auto max-w-[1400px] px-6 py-20 md:py-28">
           <div className="grid gap-12 md:grid-cols-12">
-            <div className="md:col-span-5">
+            <div className="relative overflow-hidden md:col-span-5">
+              <img
+                src={saas01}
+                alt="CAPTURES BOOTH app"
+                className="absolute inset-0 z-0 h-full w-full object-cover opacity-25"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 z-0 bg-gradient-to-br from-[color:var(--color-teal)]/85 via-[color:var(--color-teal)]/70 to-[color:var(--color-teal)]/90" />
+              <div className="relative z-10 p-6 md:p-8">
               <div className="flex items-baseline gap-4">
                 <span className="font-mono text-[11px] tracking-[0.2em] text-primary">P2</span>
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
@@ -218,6 +226,7 @@ function Index() {
               >
                 Open captures.photo/booth ↗
               </a>
+              </div>
             </div>
 
             {/* Module preview */}
@@ -255,25 +264,6 @@ function Index() {
             </div>
           </div>
 
-          {/* App screenshot */}
-          <div className="mt-16">
-            <div className="flex items-baseline justify-between">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                Inside the app
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
-                1 screen
-              </span>
-            </div>
-            <div className="mt-6 max-w-sm overflow-hidden border border-border/50 bg-background/30">
-              <img
-                src={saas01}
-                alt="CAPTURES BOOTH app"
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
         </div>
       </section>
 
