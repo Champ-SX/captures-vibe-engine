@@ -16,11 +16,31 @@ export type CaseStudy = {
 };
 
 
-const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1800&q=75`;
-
 import esteeLauderImg from "@/assets/case-studies/estee-lauder.jpg";
 import cartierImg from "@/assets/case-studies/cartier.jpg";
 import gettyImagesImg from "@/assets/case-studies/getty-images.jpg";
+
+import el1 from "@/assets/case-studies/estee-lauder/001-7-2.jpg";
+import el2 from "@/assets/case-studies/estee-lauder/002-7-2.jpg";
+import el3 from "@/assets/case-studies/estee-lauder/003-7-2-1.jpg";
+import el4 from "@/assets/case-studies/estee-lauder/004-7-2.jpg";
+
+import ca1 from "@/assets/case-studies/cartier/001-6-2.jpg";
+import ca2 from "@/assets/case-studies/cartier/002-6-2.jpg";
+import ca3 from "@/assets/case-studies/cartier/003-6-2.jpg";
+import ca4 from "@/assets/case-studies/cartier/004-6-2.jpg";
+import ca5 from "@/assets/case-studies/cartier/005-6-2.jpg";
+import ca6 from "@/assets/case-studies/cartier/006-6-2.jpg";
+import ca7 from "@/assets/case-studies/cartier/005-7-2.jpg";
+import ca8 from "@/assets/case-studies/cartier/006-7-2.jpg";
+import ca9 from "@/assets/case-studies/cartier/007-2-2.jpg";
+
+import gi1 from "@/assets/case-studies/getty-images/getty.jpg";
+import gi2 from "@/assets/case-studies/getty-images/DSCF5225-2.jpg";
+import gi3 from "@/assets/case-studies/getty-images/DSCF5275-2.jpg";
+import gi4 from "@/assets/case-studies/getty-images/DSCF5340-2.jpg";
+import gi5 from "@/assets/case-studies/getty-images/DSCF5353-2.jpg";
+import gi6 from "@/assets/case-studies/getty-images/DSCF5362-2.jpg";
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -46,7 +66,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Channels activated", value: "FB · IG · TikTok" },
       { label: "Format", value: "Cinematic VIDEOBOOTH" },
     ],
-    gallery: [esteeLauderImg, img("photo-1492684223066-81342ee5ff30"), img("photo-1535378917042-10a22c95931a"), img("photo-1493225457124-a3eb161ffa5f")],
+    gallery: [el1, el2, el3, el4],
   },
   {
     slug: "cartier-precious-garage",
@@ -71,7 +91,7 @@ export const caseStudies: CaseStudy[] = [
       { label: "Prints delivered", value: "4,500" },
       { label: "Venue", value: "Siam Paragon, Bangkok" },
     ],
-    gallery: [cartierImg, img("photo-1604881991720-f91add269bed"), img("photo-1496024840928-4c417adf211d"), img("photo-1492684223066-81342ee5ff30")],
+    gallery: [ca1, ca2, ca3, ca4, ca5, ca6, ca7, ca8, ca9],
   },
   {
     slug: "getty-images-popup-studio",
@@ -96,6 +116,6 @@ export const caseStudies: CaseStudy[] = [
       { label: "Delivery window", value: "A few hours" },
       { label: "System", value: "S/X · POPUP STUDIO" },
     ],
-    gallery: [gettyImagesImg, img("photo-1535378917042-10a22c95931a"), img("photo-1492684223066-81342ee5ff30"), img("photo-1496024840928-4c417adf211d")],
+    gallery: [gi1, gi2, gi3, gi4, gi5, gi6],
   },
 ];
