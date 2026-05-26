@@ -210,7 +210,7 @@ function Index() {
                 className="absolute inset-0 z-0 h-full w-full object-cover opacity-25"
                 loading="lazy"
               />
-              <div className="absolute inset-0 z-0 bg-gradient-to-br from-[color:var(--color-teal)]/85 via-[color:var(--color-teal)]/70 to-[color:var(--color-teal)]/90" />
+              <div className="absolute inset-0 z-0 bg-gradient-to-br from-black/85 via-black/70 to-black/90" />
               <div className="relative z-10 p-6 md:p-8">
               <div className="flex items-baseline gap-4">
                 <span className="font-mono text-[11px] tracking-[0.2em] text-primary">P2</span>
