@@ -1,6 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SectionLabel } from "@/components/SectionLabel";
 import { products } from "@/data/products";
+import { PageHero } from "@/components/PageHero";
+import { ParallaxImage } from "@/components/ParallaxImage";
 
 export const Route = createFileRoute("/product-services/$productId")({
   loader: ({ params }) => {
@@ -36,24 +38,21 @@ function ProductDetail() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative border-b border-border">
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface">
-          <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-          <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-16">
-            <h1 className="max-w-4xl text-4xl font-semibold tracking-tight text-white drop-shadow-lg md:text-6xl lg:text-7xl">
-              {product.name}
-            </h1>
-          </div>
-        </div>
-        <div className="mx-auto max-w-[1400px] px-6 py-12">
-          <Link to="/product-services" className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-primary">
-            ← All products
-          </Link>
-          <p className="mt-4 max-w-2xl text-lg text-muted-foreground md:text-xl">{product.tagline}</p>
-        </div>
-      </section>
+      <PageHero
+        image={product.image}
+        alt={product.name}
+        backLink={{ to: "/product-services", label: "All products" }}
+        eyebrow="Product"
+        title={product.name}
+        intro={product.tagline}
+        cta={{ href: `mailto:hello@captures.photo?subject=${encodeURIComponent(product.name + " inquiry")}`, label: "Request a quote →" }}
+        meta={[
+          { k: "Output", v: product.output },
+          { k: "Setup", v: product.setup },
+          { k: "Best for", v: product.bestFor },
+          { k: "Features", v: `${product.features.length} modules` },
+        ]}
+      />
 
       {/* OVERVIEW */}
       <section className="border-b border-border">
@@ -114,13 +113,26 @@ function ProductDetail() {
           <SectionLabel index="05">Sample outputs</SectionLabel>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {product.samples.map((s: string, i: number) => (
-              <div key={i} className="aspect-[4/5] overflow-hidden border border-border bg-surface">
-                <img src={s} alt="" className="h-full w-full object-cover" />
+              <div key={i} className="group aspect-[4/5] overflow-hidden border border-border bg-surface">
+                <img src={s} alt="" className="img-hover-lift h-full w-full object-cover" />
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* PARALLAX BREAK */}
+      {product.samples[0] && (
+        <section className="border-b border-border">
+          <ParallaxImage
+            src={product.samples[0]}
+            alt=""
+            speed={0.2}
+            className="h-[55vh] min-h-[360px] w-full"
+            overlay
+          />
+        </section>
+      )}
 
       {/* LINEUP GRID */}
       <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
