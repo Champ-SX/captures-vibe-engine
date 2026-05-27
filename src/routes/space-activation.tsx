@@ -6,7 +6,10 @@ import cafeCoincidence from "@/assets/space-activation/cafe-coincidence.jpg";
 import rkfCafe from "@/assets/space-activation/rkf-cafe.jpg";
 import templeImg from "@/assets/space-activation/temple.jpg";
 import cafeOrange from "@/assets/space-activation/cafe-orange.jpg";
-import homeSpaceActivation from "@/assets/home/home-space-activation.jpg";
+import fotoautomatSkeleton from "@/assets/space-activation/fotoautomat-skeleton.jpg";
+import sxAutomatHallway from "@/assets/space-activation/sx-automat-hallway.jpg";
+import fotoautomatMannequin from "@/assets/space-activation/fotoautomat-mannequin.jpg";
+import baccBooth from "@/assets/space-activation/bacc-booth.jpg";
 import { PageHero } from "@/components/PageHero";
 import { ParallaxImage } from "@/components/ParallaxImage";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
@@ -111,8 +114,10 @@ function SpaceActivation() {
               { src: rkfCafe, alt: "Rubber Killer photoautomat in RK Café" },
               { src: templeImg, alt: "Phannapast photoautomat at Chinese temple" },
               { src: cafeOrange, alt: "Photoautomat installed in a warm orange café interior" },
-              { src: homeSpaceActivation, alt: "Photoautomat activation in a lifestyle venue" },
-              { src: heroImg, alt: "Photoautomat as a destination inside a hosting space" },
+              { src: sxAutomatHallway, alt: "sx.automat photoautomat in a co-working hallway" },
+              { src: fotoautomatSkeleton, alt: "Fotoautomat booth styled with a vintage skeleton display" },
+              { src: fotoautomatMannequin, alt: "Fotoautomat booth set inside a vintage curiosity shop" },
+              { src: baccBooth, alt: "Thai illustrator photo booth installation at BACC" },
             ].map((img, i) => (
               <RevealOnScroll key={img.alt} delay={i * 80} className="group aspect-square overflow-hidden border border-border bg-surface">
                 <img src={img.src} alt={img.alt} className="img-hover-lift h-full w-full object-cover" />
