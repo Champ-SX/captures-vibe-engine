@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SectionLabel } from "@/components/SectionLabel";
 import { PageHero } from "@/components/PageHero";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import techHero from "@/assets/products/ai-booth/ai-booth-02.jpg";
