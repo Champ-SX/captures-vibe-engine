@@ -4,7 +4,6 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { Marquee } from "@/components/Marquee";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { ParallaxImage } from "@/components/ParallaxImage";
-import { caseStudies } from "@/data/caseStudies";
 import { products } from "@/data/products";
 import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
 import homeProductServices from "@/assets/home/home-product-services.jpg";
