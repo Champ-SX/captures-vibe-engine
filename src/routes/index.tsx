@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Marquee } from "@/components/Marquee";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { ParallaxImage } from "@/components/ParallaxImage";
 import { caseStudies } from "@/data/caseStudies";
-import { products, type Product } from "@/data/products";
+import { products } from "@/data/products";
 import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
 import homeProductServices from "@/assets/home/home-product-services.jpg";
 import homeSpaceActivation from "@/assets/home/home-space-activation.jpg";
@@ -28,11 +27,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [stripProducts, setStripProducts] = useState<Product[]>(() => products.slice(0, 5));
-  useEffect(() => {
-    const shuffled = [...products].sort(() => Math.random() - 0.5).slice(0, 5);
-    setStripProducts(shuffled);
-  }, []);
   const marqueeProducts = products.slice(0, 10);
   return (
     <>
