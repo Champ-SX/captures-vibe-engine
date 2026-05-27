@@ -208,6 +208,30 @@ function Index() {
         </Marquee>
       </section>
 
+      {/* PARALLAX IMAGE BAND */}
+      <section className="relative h-[60vh] min-h-[420px] border-b border-border">
+        <ParallaxImage
+          src={homeProductServices}
+          alt="CAPTURES booth in production"
+          speed={0.18}
+          className="h-full w-full"
+          overlay
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="mx-auto w-full max-w-[1400px] px-6">
+            <RevealOnScroll>
+              <div className="max-w-2xl">
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">In motion</span>
+                <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+                  Every capture<br />
+                  <span className="text-primary">becomes a moment.</span>
+                </h2>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </div>
+      </section>
+
       {/* PILLAR 2 — CAPTURES BOOTH (SaaS) */}
       <section
         className="relative overflow-hidden border-b border-border bg-black"
