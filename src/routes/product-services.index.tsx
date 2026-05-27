@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionLabel } from "@/components/SectionLabel";
 import { products } from "@/data/products";
+import { PageHero } from "@/components/PageHero";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 export const Route = createFileRoute("/product-services/")({
   head: () => ({
@@ -19,18 +21,18 @@ export const Route = createFileRoute("/product-services/")({
 function ProductServices() {
   return (
     <>
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
-          <SectionLabel index="01">Product & Services</SectionLabel>
-          <h1 className="mt-6 max-w-4xl text-5xl font-semibold tracking-tight md:text-7xl">
+      <PageHero
+        image={products[0]?.image}
+        eyebrow="02 · Product & Services"
+        title={
+          <>
             Photobooth systems for every<br />
-            <span className="text-muted-foreground">format of event.</span>
-          </h1>
-          <p className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg">
-            A Custom Experience and a hardware catalogue engineered around how modern activations actually flow — from unattended retail to high-volume brand experiences.
-          </p>
-        </div>
-      </section>
+            <span className="text-primary">format of event.</span>
+          </>
+        }
+        intro="A Custom Experience and a hardware catalogue engineered around how modern activations actually flow — from unattended retail to high-volume brand experiences."
+        cta={{ href: "mailto:hello@captures.photo", label: "Talk to us →" }}
+      />
 
       {/* CUSTOM EXPERIENCE */}
       <section className="border-b border-border">
