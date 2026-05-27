@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SectionLabel } from "@/components/SectionLabel";
+import { PageHero } from "@/components/PageHero";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
+import techHero from "@/assets/products/ai-booth/ai-booth-02.jpg";
 
 export const Route = createFileRoute("/technology")({
   head: () => ({
@@ -63,24 +65,25 @@ const modules = [
 function Technology() {
   return (
     <>
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
-          <SectionLabel index="01">Technology</SectionLabel>
-          <h1 className="mt-6 max-w-4xl text-5xl font-semibold tracking-tight md:text-7xl">
-            A flexible technology stack<br />
-            <span className="text-primary">built for modern event</span><br />
-            experiences and activations.
-          </h1>
-          <p className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg">
-            Photo Merchandise
-          </p>
-        </div>
-      </section>
+      <PageHero
+        image={techHero}
+        alt="Technology stack"
+        eyebrow="04 · Technology"
+        title={
+          <>
+            A flexible stack<br />
+            <span className="text-primary">built for modern</span><br />
+            event activations.
+          </>
+        }
+        intro="Payments, creative print, GIF, cloud gallery, analytics, and photo merchandise — built as modular components you can mix into any activation."
+        cta={{ href: "mailto:hello@captures.photo", label: "Talk to us →" }}
+      />
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-16">
           <div className="grid gap-px bg-border md:grid-cols-2">
-            {modules.map((m) => {
+            {modules.map((m, idx) => {
               const bg =
                 m.tone === "teal"
                   ? "bg-[color:var(--color-teal)]"
@@ -88,7 +91,7 @@ function Technology() {
                   ? "bg-[color:var(--color-yellow)] text-[color:var(--color-primary-foreground)]"
                   : "bg-background";
               return (
-                <div key={m.n} className={`${bg} p-10 md:p-12`}>
+                <RevealOnScroll key={m.n} delay={idx * 60} className={`${bg} p-10 md:p-12`}>
                   <div className="flex items-baseline justify-between">
                     <span className={`font-mono text-[11px] tracking-[0.2em] ${m.tone === "yellow" ? "text-[color:var(--color-primary-foreground)]/70" : "text-primary"}`}>
                       MODULE / {m.n}
@@ -106,7 +109,7 @@ function Technology() {
                       </div>
                     ))}
                   </div>
-                </div>
+                </RevealOnScroll>
               );
             })}
           </div>

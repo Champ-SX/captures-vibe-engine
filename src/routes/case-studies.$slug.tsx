@@ -1,6 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SectionLabel } from "@/components/SectionLabel";
 import { caseStudies } from "@/data/caseStudies";
+import { PageHero } from "@/components/PageHero";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { ParallaxImage } from "@/components/ParallaxImage";
 
 export const Route = createFileRoute("/case-studies/$slug")({
   loader: ({ params }) => {
@@ -37,30 +40,28 @@ function CaseStudyDetail() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative border-b border-border">
-        <div className="relative aspect-[16/9] w-full overflow-hidden bg-surface">
-          <img src={cs.hero} alt={cs.client} className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-        </div>
-        <div className="mx-auto -mt-32 max-w-[1400px] px-6 pb-16 md:-mt-48">
-          <Link to="/case-studies" className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground hover:text-primary">
-            ← All case studies
-          </Link>
-          <div className="mt-4 flex gap-3">
-            <span className="bg-background/85 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{cs.category}</span>
-            <span className="bg-background/85 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{cs.year}</span>
-          </div>
-          <div className="eyebrow mt-6">{cs.client}</div>
-          <h1 className="mt-3 max-w-4xl text-3xl font-semibold tracking-tight md:text-6xl">{cs.title}</h1>
-        </div>
-      </section>
+      <PageHero
+        image={cs.hero}
+        alt={cs.client}
+        backLink={{ to: "/case-studies", label: "All case studies" }}
+        eyebrow={cs.client}
+        title={cs.title}
+        intro={cs.summary}
+        meta={[
+          { k: "Client", v: cs.client },
+          { k: "Year", v: cs.year },
+          { k: "Category", v: cs.category },
+          { k: "Format", v: cs.technology[0] ?? "—" },
+        ]}
+      />
 
       {/* OVERVIEW */}
       <section className="border-b border-border">
         <div className="mx-auto grid max-w-[1400px] gap-16 px-6 py-24 md:grid-cols-[1fr_2fr]">
           <SectionLabel index="01">Overview</SectionLabel>
-          <p className="text-lg text-muted-foreground md:text-xl">{cs.summary}</p>
+          <RevealOnScroll as="p" className="text-lg text-muted-foreground md:text-xl">
+            {cs.summary}
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -75,6 +76,19 @@ function CaseStudyDetail() {
           </div>
         </div>
       </section>
+
+      {/* PARALLAX BAND */}
+      {cs.gallery[0] && (
+        <section className="border-b border-border">
+          <ParallaxImage
+            src={cs.gallery[0]}
+            alt=""
+            speed={0.18}
+            className="h-[60vh] min-h-[400px] w-full"
+            overlay
+          />
+        </section>
+      )}
 
       {/* CHALLENGE + JOURNEY */}
       <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
@@ -145,9 +159,9 @@ function CaseStudyDetail() {
           <SectionLabel index="08">Behind the scenes</SectionLabel>
           <div className="mt-12 grid gap-4 md:grid-cols-2">
             {cs.gallery.map((g: string, i: number) => (
-              <div key={i} className={`overflow-hidden border border-border bg-surface ${i === 0 ? "md:col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
-                <img src={g} alt="" className="h-full w-full object-cover" />
-              </div>
+              <RevealOnScroll key={i} delay={i * 60} className={`group overflow-hidden border border-border bg-surface ${i === 0 ? "md:col-span-2 aspect-[16/8]" : "aspect-[4/3]"}`}>
+                <img src={g} alt="" className="img-hover-lift h-full w-full object-cover" />
+              </RevealOnScroll>
             ))}
           </div>
         </div>
