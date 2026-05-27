@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { CapturesLogo } from "@/components/CapturesLogo";
 
 const nav = [
   { to: "/product-services", label: "Product & Services" },
@@ -11,9 +12,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2 font-display text-[17px] font-semibold tracking-tight">
-          <span className="inline-block h-2 w-2 bg-primary" />
-          <span>CAP<span className="text-primary">*</span>TURES</span>
+        <Link to="/" aria-label="CAPTURES — home">
+          <CapturesLogo variant="horizontal" tone="lime" />
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map((item) => (

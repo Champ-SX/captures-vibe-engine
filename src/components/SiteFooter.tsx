@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { CapturesLogo } from "@/components/CapturesLogo";
 
 export function SiteFooter() {
   return (
@@ -6,10 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1400px] px-6 py-16">
         <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2 font-display text-lg font-semibold">
-              <span className="inline-block h-2 w-2 bg-primary" />
-              <span>CAP<span className="text-primary">*</span>TURES</span>
-            </div>
+            <CapturesLogo variant="vertical" tone="lime" />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               Event experience tools built for modern activations. A SIXSHEET system.
             </p>

@@ -63,8 +63,8 @@
   --color-teal-foreground: var(--teal-foreground);
   --color-yellow: var(--yellow);
   --color-surface: var(--surface);
-  --font-display: "Space Grotesk", "Inter Tight", system-ui, sans-serif;
-  --font-sans: "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-display: "neulis-alt", "Space Grotesk", "Inter Tight", system-ui, sans-serif;
+  --font-sans: "neulis-alt", "Inter Tight", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
