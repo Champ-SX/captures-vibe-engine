@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionLabel } from "@/components/SectionLabel";
 import { products } from "@/data/products";
 import { PageHero } from "@/components/PageHero";
-import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 export const Route = createFileRoute("/product-services/")({
   head: () => ({
