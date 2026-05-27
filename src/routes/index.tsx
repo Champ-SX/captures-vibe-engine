@@ -332,7 +332,7 @@ function Index() {
             <Link to="/case-studies/$slug" params={{ slug: "estee-lauder-pure-color-desire" }} className="group block">
               <div className="relative aspect-[16/11] overflow-hidden border border-border">
                 <img
-                  src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80"
+                  src={esteeLauderHero}
                   alt="Estee Lauder Pure Color Desire lipstick launch event"
                   className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
                 />
@@ -355,7 +355,7 @@ function Index() {
             <Link to="/case-studies/$slug" params={{ slug: "cartier-precious-garage" }} className="group block">
               <div className="relative aspect-[16/11] overflow-hidden border border-border">
                 <img
-                  src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1600&q=80"
+                  src={cartierHero}
                   alt="Cartier Precious Garage golden container activation"
                   className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
                 />
