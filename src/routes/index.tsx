@@ -7,6 +7,8 @@ import { products, type Product } from "@/data/products";
 import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
 import homeProductServices from "@/assets/home/home-product-services.jpg";
 import homeSpaceActivation from "@/assets/home/home-space-activation.jpg";
+import esteeLauderHero from "@/assets/case-studies/estee-lauder/001-7-2.jpg";
+import cartierHero from "@/assets/case-studies/cartier/001-6-2.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
