@@ -203,3 +203,29 @@
   text-transform: uppercase;
   color: var(--color-muted-foreground);
 }
+
+/* Marquee */
+@keyframes marquee {
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Slow Ken-Burns zoom for hero imagery */
+@keyframes kenburns {
+  0%   { transform: scale(1.08) translate3d(0, 0, 0); }
+  100% { transform: scale(1.22) translate3d(-1.5%, -1.5%, 0); }
+}
+.animate-kenburns {
+  animation: kenburns 18s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns { animation: none !important; }
+  [style*="marquee"] { animation: none !important; }
+}
+
+/* Hover image lift utility */
+.img-hover-lift {
+  transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1), filter 700ms ease;
+}
+.group:hover .img-hover-lift { transform: scale(1.04); }
