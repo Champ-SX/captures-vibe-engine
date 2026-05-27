@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
-import { caseStudies } from "@/data/caseStudies";
-import { products, type Product } from "@/data/products";
+import { Marquee } from "@/components/Marquee";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { ParallaxImage } from "@/components/ParallaxImage";
+import { products } from "@/data/products";
 import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
 import homeProductServices from "@/assets/home/home-product-services.jpg";
 import homeSpaceActivation from "@/assets/home/home-space-activation.jpg";
@@ -25,61 +26,84 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [stripProducts, setStripProducts] = useState<Product[]>(() => products.slice(0, 5));
-  useEffect(() => {
-    const shuffled = [...products].sort(() => Math.random() - 0.5).slice(0, 5);
-    setStripProducts(shuffled);
-  }, []);
+  const marqueeProducts = products.slice(0, 10);
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div
-          className="absolute inset-0 z-0 opacity-60"
-          style={{
-            backgroundImage: `url(${heroKiehls})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+      {/* HERO — cinematic full-bleed */}
+      <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden border-b border-border">
+        <img
+          src={heroKiehls}
+          alt="CAPTURES brand activation"
+          className="absolute inset-0 h-full w-full object-cover animate-kenburns"
         />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
-        <div className="relative z-10 mx-auto max-w-[1400px] px-6 pb-28 pt-24 md:pb-40 md:pt-32">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/10" />
+        <div className="absolute inset-x-0 top-0 z-10 mx-auto max-w-[1400px] px-6 pt-8">
           <SectionLabel index="00">A SIXSHEET system</SectionLabel>
-          <h1 className="mt-6 max-w-5xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl lg:text-[96px]">
-            Event experience tools<br />
-            <span className="text-primary">for modern activations.</span>
-          </h1>
-          <p className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg">
-            CAPTURES is a connected photobooth and event engagement system. Built for brand activations, retail, and live experiences.
-          </p>
-          <div className="mt-12 flex flex-wrap gap-3">
-            <Link
-              to="/product-services"
-              className="bg-primary px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Explore products →
-            </Link>
-            <Link
-              to="/case-studies"
-              className="border border-border px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary hover:text-primary"
-            >
-              See activations
-            </Link>
-          </div>
+        </div>
 
-          <div className="mt-20 grid max-w-3xl grid-cols-3 gap-6 border-t border-border pt-8">
+        {/* Floating overlay card, definedvc-style */}
+        <div className="absolute bottom-10 left-6 right-6 z-10 md:bottom-16 md:left-12 md:right-auto md:max-w-2xl">
+          <RevealOnScroll className="bg-background/95 p-8 backdrop-blur-sm md:p-12">
+            <div className="flex items-center gap-3">
+              <span className="relative inline-flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--color-yellow)] opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--color-yellow)]" />
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Live · captures.photo
+              </span>
+            </div>
+            <h1 className="mt-6 text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+              Event experience tools<br />
+              <span className="text-primary">for modern activations.</span>
+            </h1>
+            <p className="mt-6 max-w-lg text-sm text-muted-foreground md:text-base">
+              CAPTURES is a connected photobooth and event engagement system. Built for brand activations, retail, and live experiences.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/product-services"
+                className="bg-primary px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                Explore products →
+              </Link>
+              <Link
+                to="/case-studies"
+                className="border border-border px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                See activations
+              </Link>
+            </div>
+          </RevealOnScroll>
+        </div>
+
+        {/* Floating stats — right side */}
+        <div className="absolute bottom-10 right-6 z-10 hidden md:bottom-16 md:right-12 md:block">
+          <div className="grid grid-cols-1 gap-4 text-right">
             {[
               { k: "12+", l: "Booth products" },
               { k: "180k", l: "Guest captures" },
               { k: "8", l: "Cities live" },
             ].map((s) => (
-              <div key={s.l}>
-                <div className="font-display text-3xl font-semibold md:text-4xl">{s.k}</div>
-                <div className="eyebrow mt-2">{s.l}</div>
+              <div key={s.l} className="bg-background/70 px-5 py-3 backdrop-blur-sm">
+                <div className="font-display text-2xl font-semibold">{s.k}</div>
+                <div className="eyebrow mt-1">{s.l}</div>
               </div>
             ))}
           </div>
         </div>
+      </section>
+
+      {/* MARQUEE TICKER */}
+      <section className="border-b border-border bg-background py-6">
+        <Marquee speed={45}>
+          {["Photobooth systems", "Space activations", "Event technology", "AI portrait", "360 video", "Mirror booth", "Live gallery", "Brand experiences"].map((t, i) => (
+            <div key={i} className="flex items-center gap-12">
+              <span className="font-display text-3xl font-semibold tracking-tight md:text-5xl">{t}</span>
+              <span className="h-2 w-2 rounded-full bg-primary" />
+            </div>
+          ))}
+        </Marquee>
       </section>
 
       {/* SECTION INTRO */}
@@ -91,10 +115,12 @@ function Index() {
               Product · Software · Activation
             </span>
           </div>
-          <h2 className="mt-6 max-w-4xl text-3xl font-semibold tracking-tight md:text-5xl">
-            Our Product & Services<br />
-            <span className="text-muted-foreground">serve your event experience.</span>
-          </h2>
+          <RevealOnScroll>
+            <h2 className="mt-6 max-w-4xl text-3xl font-semibold tracking-tight md:text-5xl">
+              Our Product & Services<br />
+              <span className="text-muted-foreground">serve your event experience.</span>
+            </h2>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -153,44 +179,55 @@ function Index() {
             </div>
           </div>
 
-          {/* Modular product strip */}
-          <div className="mt-16 -mx-6 overflow-x-auto px-6">
-            <div className="flex min-w-max gap-px bg-border">
-              {stripProducts.map((p) => (
-                  <Link
-                    key={p.id}
-                    to="/product-services/$productId"
-                    params={{ productId: p.id }}
-                    className="group block w-[220px] flex-shrink-0 bg-background"
-                  >
-                    <div className="relative aspect-[4/5] overflow-hidden">
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
-                      />
-                    </div>
-                    <div className="p-3">
-                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{p.id.replace("product-", "P/")}</div>
-                      <div className="mt-2 font-display text-sm font-medium">{p.name}</div>
-                    </div>
-                  </Link>
-                ))}
-              <Link
-                to="/product-services"
-                className="group block w-[220px] flex-shrink-0 bg-primary"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden flex items-center justify-center">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground">
-                    →
-                  </span>
-                </div>
-                <div className="p-3">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/80">All</div>
-                  <div className="mt-2 font-display text-sm font-medium text-primary-foreground">See all products →</div>
-                </div>
-              </Link>
-            </div>
+        </div>
+      </section>
+
+      {/* INFINITE PRODUCT MARQUEE */}
+      <section className="border-b border-border bg-background py-12">
+        <Marquee speed={60}>
+          {marqueeProducts.map((p) => (
+            <Link
+              key={p.id}
+              to="/product-services/$productId"
+              params={{ productId: p.id }}
+              className="group block w-[260px] flex-shrink-0"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden bg-surface">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="img-hover-lift h-full w-full object-cover grayscale group-hover:grayscale-0"
+                />
+              </div>
+              <div className="mt-3">
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{p.id.replace("product-", "P/")}</div>
+                <div className="mt-1 font-display text-sm font-medium">{p.name}</div>
+              </div>
+            </Link>
+          ))}
+        </Marquee>
+      </section>
+
+      {/* PARALLAX IMAGE BAND */}
+      <section className="relative h-[60vh] min-h-[420px] border-b border-border">
+        <ParallaxImage
+          src={homeProductServices}
+          alt="CAPTURES booth in production"
+          speed={0.18}
+          className="h-full w-full"
+          overlay
+        />
+        <div className="absolute inset-0 flex items-center">
+          <div className="mx-auto w-full max-w-[1400px] px-6">
+            <RevealOnScroll>
+              <div className="max-w-2xl">
+                <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">In motion</span>
+                <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+                  Every capture<br />
+                  <span className="text-primary">becomes a moment.</span>
+                </h2>
+              </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -314,7 +351,7 @@ function Index() {
         </div>
       </section>
 
-      {/* FEATURED WORK */}
+      {/* FEATURED WORK — image-led overlay tiles */}
       <section className="border-b border-border bg-background">
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
           <div className="flex items-end justify-between">
@@ -327,50 +364,64 @@ function Index() {
             </Link>
           </div>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-10">
-            {/* 01 — Estee Lauder */}
-            <Link to="/case-studies/$slug" params={{ slug: "estee-lauder-pure-color-desire" }} className="group block">
-              <div className="relative aspect-[16/11] overflow-hidden border border-border">
+          <div className="mt-12 grid gap-6 md:grid-cols-12 md:gap-8">
+            {/* 01 — Estee Lauder (tall, left, offset) */}
+            <Link
+              to="/case-studies/$slug"
+              params={{ slug: "estee-lauder-pure-color-desire" }}
+              className="group relative col-span-12 block md:col-span-7"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden md:aspect-[5/6]">
                 <img
                   src={esteeLauderHero}
                   alt="Estee Lauder Pure Color Desire lipstick launch event"
-                  className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                  className="img-hover-lift h-full w-full object-cover"
                 />
-                <div className="absolute left-4 top-4 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-90" />
+                <div className="absolute left-5 top-5 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
                   Beauty · Product Launch
                 </div>
-              </div>
-              <div className="mt-6 flex items-start justify-between gap-6">
-                <h3 className="max-w-xl font-display text-2xl font-semibold leading-tight tracking-tight md:text-[28px]">
-                  Cinematic VIDEOBOOTH for Estee Lauder's Pure Color Desire launch.
-                </h3>
-                <span className="shrink-0 font-mono text-[11px] tracking-[0.2em] text-muted-foreground">2024</span>
-              </div>
-              <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                The St. Regis Hotel — Bangkok
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    The St. Regis Hotel — Bangkok · 2024
+                  </div>
+                  <h3 className="mt-3 max-w-xl font-display text-2xl font-semibold leading-tight tracking-tight md:text-4xl">
+                    Cinematic VIDEOBOOTH for Estée Lauder's Pure Color Desire launch.
+                  </h3>
+                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    View case study →
+                  </span>
+                </div>
               </div>
             </Link>
 
-            {/* 02 — Cartier */}
-            <Link to="/case-studies/$slug" params={{ slug: "cartier-precious-garage" }} className="group block">
-              <div className="relative aspect-[16/11] overflow-hidden border border-border">
+            {/* 02 — Cartier (right, top-pushed) */}
+            <Link
+              to="/case-studies/$slug"
+              params={{ slug: "cartier-precious-garage" }}
+              className="group relative col-span-12 block md:col-span-5 md:mt-24"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden md:aspect-[4/6]">
                 <img
                   src={cartierHero}
                   alt="Cartier Precious Garage golden container activation"
-                  className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                  className="img-hover-lift h-full w-full object-cover"
                 />
-                <div className="absolute left-4 top-4 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-90" />
+                <div className="absolute left-5 top-5 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
                   Luxury · Brand Activation
                 </div>
-              </div>
-              <div className="mt-6 flex items-start justify-between gap-6">
-                <h3 className="max-w-xl font-display text-2xl font-semibold leading-tight tracking-tight md:text-[28px]">
-                  4,526 downloads and 4,500 prints for Cartier Precious Garage.
-                </h3>
-                <span className="shrink-0 font-mono text-[11px] tracking-[0.2em] text-muted-foreground">2024</span>
-              </div>
-              <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                Siam Paragon — Bangkok
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    Siam Paragon — Bangkok · 2024
+                  </div>
+                  <h3 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-tight md:text-3xl">
+                    4,526 downloads and 4,500 prints for Cartier Precious Garage.
+                  </h3>
+                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    View case study →
+                  </span>
+                </div>
               </div>
             </Link>
           </div>
