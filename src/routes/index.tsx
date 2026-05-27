@@ -186,46 +186,33 @@ function Index() {
             </div>
           </div>
 
-          {/* Modular product strip */}
-          <div className="mt-16 -mx-6 overflow-x-auto px-6">
-            <div className="flex min-w-max gap-px bg-border">
-              {stripProducts.map((p) => (
-                  <Link
-                    key={p.id}
-                    to="/product-services/$productId"
-                    params={{ productId: p.id }}
-                    className="group block w-[220px] flex-shrink-0 bg-background"
-                  >
-                    <div className="relative aspect-[4/5] overflow-hidden">
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
-                      />
-                    </div>
-                    <div className="p-3">
-                      <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{p.id.replace("product-", "P/")}</div>
-                      <div className="mt-2 font-display text-sm font-medium">{p.name}</div>
-                    </div>
-                  </Link>
-                ))}
-              <Link
-                to="/product-services"
-                className="group block w-[220px] flex-shrink-0 bg-primary"
-              >
-                <div className="relative aspect-[4/5] overflow-hidden flex items-center justify-center">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground">
-                    →
-                  </span>
-                </div>
-                <div className="p-3">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/80">All</div>
-                  <div className="mt-2 font-display text-sm font-medium text-primary-foreground">See all products →</div>
-                </div>
-              </Link>
-            </div>
-          </div>
         </div>
+      </section>
+
+      {/* INFINITE PRODUCT MARQUEE */}
+      <section className="border-b border-border bg-background py-12">
+        <Marquee speed={60}>
+          {marqueeProducts.map((p) => (
+            <Link
+              key={p.id}
+              to="/product-services/$productId"
+              params={{ productId: p.id }}
+              className="group block w-[260px] flex-shrink-0"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden bg-surface">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  className="img-hover-lift h-full w-full object-cover grayscale group-hover:grayscale-0"
+                />
+              </div>
+              <div className="mt-3">
+                <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{p.id.replace("product-", "P/")}</div>
+                <div className="mt-1 font-display text-sm font-medium">{p.name}</div>
+              </div>
+            </Link>
+          ))}
+        </Marquee>
       </section>
 
       {/* PILLAR 2 — CAPTURES BOOTH (SaaS) */}
@@ -347,7 +334,7 @@ function Index() {
         </div>
       </section>
 
-      {/* FEATURED WORK */}
+      {/* FEATURED WORK — image-led overlay tiles */}
       <section className="border-b border-border bg-background">
         <div className="mx-auto max-w-[1400px] px-6 py-24 md:py-32">
           <div className="flex items-end justify-between">
@@ -360,50 +347,64 @@ function Index() {
             </Link>
           </div>
 
-          <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-10">
-            {/* 01 — Estee Lauder */}
-            <Link to="/case-studies/$slug" params={{ slug: "estee-lauder-pure-color-desire" }} className="group block">
-              <div className="relative aspect-[16/11] overflow-hidden border border-border">
+          <div className="mt-12 grid gap-6 md:grid-cols-12 md:gap-8">
+            {/* 01 — Estee Lauder (tall, left, offset) */}
+            <Link
+              to="/case-studies/$slug"
+              params={{ slug: "estee-lauder-pure-color-desire" }}
+              className="group relative col-span-12 block md:col-span-7"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden md:aspect-[5/6]">
                 <img
                   src={esteeLauderHero}
                   alt="Estee Lauder Pure Color Desire lipstick launch event"
-                  className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                  className="img-hover-lift h-full w-full object-cover"
                 />
-                <div className="absolute left-4 top-4 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-90" />
+                <div className="absolute left-5 top-5 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
                   Beauty · Product Launch
                 </div>
-              </div>
-              <div className="mt-6 flex items-start justify-between gap-6">
-                <h3 className="max-w-xl font-display text-2xl font-semibold leading-tight tracking-tight md:text-[28px]">
-                  Cinematic VIDEOBOOTH for Estee Lauder's Pure Color Desire launch.
-                </h3>
-                <span className="shrink-0 font-mono text-[11px] tracking-[0.2em] text-muted-foreground">2024</span>
-              </div>
-              <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                The St. Regis Hotel — Bangkok
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    The St. Regis Hotel — Bangkok · 2024
+                  </div>
+                  <h3 className="mt-3 max-w-xl font-display text-2xl font-semibold leading-tight tracking-tight md:text-4xl">
+                    Cinematic VIDEOBOOTH for Estée Lauder's Pure Color Desire launch.
+                  </h3>
+                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    View case study →
+                  </span>
+                </div>
               </div>
             </Link>
 
-            {/* 02 — Cartier */}
-            <Link to="/case-studies/$slug" params={{ slug: "cartier-precious-garage" }} className="group block">
-              <div className="relative aspect-[16/11] overflow-hidden border border-border">
+            {/* 02 — Cartier (right, top-pushed) */}
+            <Link
+              to="/case-studies/$slug"
+              params={{ slug: "cartier-precious-garage" }}
+              className="group relative col-span-12 block md:col-span-5 md:mt-24"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden md:aspect-[4/6]">
                 <img
                   src={cartierHero}
                   alt="Cartier Precious Garage golden container activation"
-                  className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                  className="img-hover-lift h-full w-full object-cover"
                 />
-                <div className="absolute left-4 top-4 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent opacity-90" />
+                <div className="absolute left-5 top-5 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
                   Luxury · Brand Activation
                 </div>
-              </div>
-              <div className="mt-6 flex items-start justify-between gap-6">
-                <h3 className="max-w-xl font-display text-2xl font-semibold leading-tight tracking-tight md:text-[28px]">
-                  4,526 downloads and 4,500 prints for Cartier Precious Garage.
-                </h3>
-                <span className="shrink-0 font-mono text-[11px] tracking-[0.2em] text-muted-foreground">2024</span>
-              </div>
-              <div className="mt-3 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                Siam Paragon — Bangkok
+                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                    Siam Paragon — Bangkok · 2024
+                  </div>
+                  <h3 className="mt-3 font-display text-2xl font-semibold leading-tight tracking-tight md:text-3xl">
+                    4,526 downloads and 4,500 prints for Cartier Precious Garage.
+                  </h3>
+                  <span className="mt-5 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    View case study →
+                  </span>
+                </div>
               </div>
             </Link>
           </div>
