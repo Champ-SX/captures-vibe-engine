@@ -2,6 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
+import { Marquee } from "@/components/Marquee";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { ParallaxImage } from "@/components/ParallaxImage";
 import { caseStudies } from "@/data/caseStudies";
 import { products, type Product } from "@/data/products";
 import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
@@ -30,56 +33,84 @@ function Index() {
     const shuffled = [...products].sort(() => Math.random() - 0.5).slice(0, 5);
     setStripProducts(shuffled);
   }, []);
+  const marqueeProducts = products.slice(0, 10);
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div
-          className="absolute inset-0 z-0 opacity-60"
-          style={{
-            backgroundImage: `url(${heroKiehls})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+      {/* HERO — cinematic full-bleed */}
+      <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden border-b border-border">
+        <img
+          src={heroKiehls}
+          alt="CAPTURES brand activation"
+          className="absolute inset-0 h-full w-full object-cover animate-kenburns"
         />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
-        <div className="relative z-10 mx-auto max-w-[1400px] px-6 pb-28 pt-24 md:pb-40 md:pt-32">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/10" />
+        <div className="absolute inset-x-0 top-0 z-10 mx-auto max-w-[1400px] px-6 pt-8">
           <SectionLabel index="00">A SIXSHEET system</SectionLabel>
-          <h1 className="mt-6 max-w-5xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl lg:text-[96px]">
-            Event experience tools<br />
-            <span className="text-primary">for modern activations.</span>
-          </h1>
-          <p className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg">
-            CAPTURES is a connected photobooth and event engagement system. Built for brand activations, retail, and live experiences.
-          </p>
-          <div className="mt-12 flex flex-wrap gap-3">
-            <Link
-              to="/product-services"
-              className="bg-primary px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Explore products →
-            </Link>
-            <Link
-              to="/case-studies"
-              className="border border-border px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary hover:text-primary"
-            >
-              See activations
-            </Link>
-          </div>
+        </div>
 
-          <div className="mt-20 grid max-w-3xl grid-cols-3 gap-6 border-t border-border pt-8">
+        {/* Floating overlay card, definedvc-style */}
+        <div className="absolute bottom-10 left-6 right-6 z-10 md:bottom-16 md:left-12 md:right-auto md:max-w-2xl">
+          <RevealOnScroll className="bg-background/95 p-8 backdrop-blur-sm md:p-12">
+            <div className="flex items-center gap-3">
+              <span className="relative inline-flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--color-yellow)] opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--color-yellow)]" />
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Live · captures.photo
+              </span>
+            </div>
+            <h1 className="mt-6 text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+              Event experience tools<br />
+              <span className="text-primary">for modern activations.</span>
+            </h1>
+            <p className="mt-6 max-w-lg text-sm text-muted-foreground md:text-base">
+              CAPTURES is a connected photobooth and event engagement system. Built for brand activations, retail, and live experiences.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/product-services"
+                className="bg-primary px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                Explore products →
+              </Link>
+              <Link
+                to="/case-studies"
+                className="border border-border px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                See activations
+              </Link>
+            </div>
+          </RevealOnScroll>
+        </div>
+
+        {/* Floating stats — right side */}
+        <div className="absolute bottom-10 right-6 z-10 hidden md:bottom-16 md:right-12 md:block">
+          <div className="grid grid-cols-1 gap-4 text-right">
             {[
               { k: "12+", l: "Booth products" },
               { k: "180k", l: "Guest captures" },
               { k: "8", l: "Cities live" },
             ].map((s) => (
-              <div key={s.l}>
-                <div className="font-display text-3xl font-semibold md:text-4xl">{s.k}</div>
-                <div className="eyebrow mt-2">{s.l}</div>
+              <div key={s.l} className="bg-background/70 px-5 py-3 backdrop-blur-sm">
+                <div className="font-display text-2xl font-semibold">{s.k}</div>
+                <div className="eyebrow mt-1">{s.l}</div>
               </div>
             ))}
           </div>
         </div>
+      </section>
+
+      {/* MARQUEE TICKER */}
+      <section className="border-b border-border bg-background py-6">
+        <Marquee speed={45}>
+          {["Photobooth systems", "Space activations", "Event technology", "AI portrait", "360 video", "Mirror booth", "Live gallery", "Brand experiences"].map((t, i) => (
+            <div key={i} className="flex items-center gap-12">
+              <span className="font-display text-3xl font-semibold tracking-tight md:text-5xl">{t}</span>
+              <span className="h-2 w-2 rounded-full bg-primary" />
+            </div>
+          ))}
+        </Marquee>
       </section>
 
       {/* SECTION INTRO */}
@@ -91,10 +122,12 @@ function Index() {
               Product · Software · Activation
             </span>
           </div>
-          <h2 className="mt-6 max-w-4xl text-3xl font-semibold tracking-tight md:text-5xl">
-            Our Product & Services<br />
-            <span className="text-muted-foreground">serve your event experience.</span>
-          </h2>
+          <RevealOnScroll>
+            <h2 className="mt-6 max-w-4xl text-3xl font-semibold tracking-tight md:text-5xl">
+              Our Product & Services<br />
+              <span className="text-muted-foreground">serve your event experience.</span>
+            </h2>
+          </RevealOnScroll>
         </div>
       </section>
 
