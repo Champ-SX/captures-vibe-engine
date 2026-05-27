@@ -5,6 +5,8 @@ import heroImg from "@/assets/space-activation/hero.jpg";
 import cafeCoincidence from "@/assets/space-activation/cafe-coincidence.jpg";
 import rkfCafe from "@/assets/space-activation/rkf-cafe.jpg";
 import templeImg from "@/assets/space-activation/temple.jpg";
+import cafeOrange from "@/assets/space-activation/cafe-orange.jpg";
+import homeSpaceActivation from "@/assets/home/home-space-activation.jpg";
 import { PageHero } from "@/components/PageHero";
 import { ParallaxImage } from "@/components/ParallaxImage";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
@@ -108,6 +110,9 @@ function SpaceActivation() {
               { src: cafeCoincidence, alt: "co—incidence photoautomat at café entrance" },
               { src: rkfCafe, alt: "Rubber Killer photoautomat in RK Café" },
               { src: templeImg, alt: "Phannapast photoautomat at Chinese temple" },
+              { src: cafeOrange, alt: "Photoautomat installed in a warm orange café interior" },
+              { src: homeSpaceActivation, alt: "Photoautomat activation in a lifestyle venue" },
+              { src: heroImg, alt: "Photoautomat as a destination inside a hosting space" },
             ].map((img, i) => (
               <RevealOnScroll key={img.alt} delay={i * 80} className="group aspect-square overflow-hidden border border-border bg-surface">
                 <img src={img.src} alt={img.alt} className="img-hover-lift h-full w-full object-cover" />
