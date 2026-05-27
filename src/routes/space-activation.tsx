@@ -5,6 +5,9 @@ import heroImg from "@/assets/space-activation/hero.jpg";
 import cafeCoincidence from "@/assets/space-activation/cafe-coincidence.jpg";
 import rkfCafe from "@/assets/space-activation/rkf-cafe.jpg";
 import templeImg from "@/assets/space-activation/temple.jpg";
+import { PageHero } from "@/components/PageHero";
+import { ParallaxImage } from "@/components/ParallaxImage";
+import { RevealOnScroll } from "@/components/RevealOnScroll";
 
 export const Route = createFileRoute("/space-activation")({
   head: () => ({
@@ -32,33 +35,19 @@ const formats = [
 function SpaceActivation() {
   return (
     <>
-      <section className="border-b border-border">
-        <div className="mx-auto grid max-w-[1400px] gap-12 px-6 py-24 md:grid-cols-[1.2fr_1fr] md:py-32">
-          <div>
-            <SectionLabel index="01">Space Activation</SectionLabel>
-            <h1 className="mt-6 text-5xl font-semibold tracking-tight md:text-7xl">
-              Built for the<br />
-              <span className="text-primary">places people return to.</span>
-            </h1>
-            <p className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg">
-              Photoautomat systems designed to increase foot traffic, engagement, and repeat visits for your venue.
-            </p>
-            <a
-              href="mailto:hello@captures.photo?subject=Space%20Activation%20inquiry"
-              className="mt-10 inline-block bg-primary px-6 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground"
-            >
-              Activate a space →
-            </a>
-          </div>
-          <div className="relative aspect-[4/5] overflow-hidden border border-border bg-surface">
-            <img
-              src={heroImg}
-              alt="Lifestyle space activation"
-              className="h-full w-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <PageHero
+        image={heroImg}
+        alt="Lifestyle space activation"
+        eyebrow="03 · Space Activation"
+        title={
+          <>
+            Built for the<br />
+            <span className="text-primary">places people return to.</span>
+          </>
+        }
+        intro="Photoautomat systems designed to increase foot traffic, engagement, and repeat visits for your venue."
+        cta={{ href: "mailto:hello@captures.photo?subject=Space%20Activation%20inquiry", label: "Activate a space →" }}
+      />
 
       {/* FORMATS */}
       <section className="border-b border-border">
@@ -99,6 +88,17 @@ function SpaceActivation() {
         </div>
       </section>
 
+      {/* PARALLAX BREAK */}
+      <section className="border-b border-border">
+        <ParallaxImage
+          src={cafeCoincidence}
+          alt="Photoautomat in a café"
+          speed={0.2}
+          className="h-[55vh] min-h-[380px] w-full"
+          overlay
+        />
+      </section>
+
       {/* GALLERY */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-[1400px] px-6 py-24">
@@ -108,10 +108,10 @@ function SpaceActivation() {
               { src: cafeCoincidence, alt: "co—incidence photoautomat at café entrance" },
               { src: rkfCafe, alt: "Rubber Killer photoautomat in RK Café" },
               { src: templeImg, alt: "Phannapast photoautomat at Chinese temple" },
-            ].map((img) => (
-              <div key={img.alt} className="aspect-square overflow-hidden border border-border bg-surface">
-                <img src={img.src} alt={img.alt} className="h-full w-full object-cover" />
-              </div>
+            ].map((img, i) => (
+              <RevealOnScroll key={img.alt} delay={i * 80} className="group aspect-square overflow-hidden border border-border bg-surface">
+                <img src={img.src} alt={img.alt} className="img-hover-lift h-full w-full object-cover" />
+              </RevealOnScroll>
             ))}
           </div>
         </div>
