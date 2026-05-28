@@ -75,7 +75,7 @@ export function PageHero({
             align === "right" ? "right-6 md:right-10" : "left-6 md:left-10"
           } max-w-[640px]`}
         >
-          <div className="bg-background/92 p-6 backdrop-blur-md md:p-10">
+          <div className="border border-white/10 bg-black/40 p-6 shadow-2xl backdrop-blur-md md:p-10">
             {backLink && (
               <div className="eyebrow mb-4 text-primary">{eyebrow}</div>
             )}
