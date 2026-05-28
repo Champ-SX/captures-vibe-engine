@@ -151,10 +151,10 @@ function Index() {
                   </p>
                 </div>
                 <div className="border-l-2 border-border pl-5">
-                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">02 — Library</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">02 — LIBRARY</div>
                   <div className="mt-2 font-display text-xl font-medium">Ready-to-Go Photobooth</div>
                   <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
-                    Twelve proven booth formats — Mirror, 360 Video, AI Portrait, Multi-Camera, Open-Air, and more. Pre-engineered, field-tested, and ready to deploy. You pick the format; we handle build, logistics, and on-site operation.
+                    Plug-and-play photobooth systems designed for brands, venues, and events. Pre-engineered, field-tested, and deployment-ready — from classic photo experiences to AI-powered and multi-camera formats. Fast to launch, easy to operate, and built for scalable real-world use.
                   </p>
                 </div>
               </div>
