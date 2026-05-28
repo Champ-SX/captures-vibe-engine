@@ -43,7 +43,7 @@ function Index() {
 
         {/* Floating overlay card, definedvc-style */}
         <div className="absolute bottom-10 left-6 right-6 z-10 md:bottom-16 md:left-12 md:right-auto md:max-w-2xl">
-          <RevealOnScroll className="bg-background/95 p-8 backdrop-blur-sm md:p-12">
+          <RevealOnScroll className="border border-white/10 bg-black/40 p-8 shadow-2xl backdrop-blur-md md:p-12">
             <div className="flex items-center gap-3">
               <span className="relative inline-flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--color-yellow)] opacity-75" />
