@@ -3,6 +3,7 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { products } from "@/data/products";
 import { PageHero } from "@/components/PageHero";
 import { ParallaxImage } from "@/components/ParallaxImage";
+import { FeatureShowcase, type FeatureItem } from "@/components/FeatureShowcase";
 
 export const Route = createFileRoute("/product-services/$productId")({
   loader: ({ params }) => {
@@ -72,19 +73,12 @@ function ProductDetail() {
       </section>
 
       {/* FEATURES */}
-      <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
-        <div className="mx-auto max-w-[1400px] px-6 py-24">
-          <SectionLabel index="02">Features</SectionLabel>
-          <div className="mt-12 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-3">
-            {product.features.map((f: string, i: number) => (
-              <div key={f} className="bg-[color:var(--color-teal)] p-8">
-                <div className="font-mono text-[10px] tracking-[0.2em] text-primary">{String(i + 1).padStart(2, "0")}</div>
-                <div className="mt-4 font-display text-xl font-medium">{f}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeatureShowcase
+        sectionIndex="02"
+        sectionLabel="Features"
+        headline={`Inside the ${product.name}.`}
+        features={buildFeatureItems(product.features, product.samples, product.image)}
+      />
 
       {/* USE CASES + BRANDING */}
       <section className="border-b border-border">
@@ -201,4 +195,16 @@ function Spec({ label, value }: { label: string; value: string }) {
       <div className="mt-3 font-display text-base font-medium">{value}</div>
     </div>
   );
+}
+
+function buildFeatureItems(
+  features: string[],
+  samples: string[],
+  fallback: string,
+): FeatureItem[] {
+  const pool = samples.length ? samples : [fallback];
+  return features.map((title, i) => ({
+    title,
+    image: pool[i % pool.length],
+  }));
 }

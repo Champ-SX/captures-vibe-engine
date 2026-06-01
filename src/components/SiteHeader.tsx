@@ -14,6 +14,7 @@ const nav = [
   { to: "/space-activation", label: "Space Activation" },
   { to: "/case-studies", label: "Case Studies" },
   { to: "/technology", label: "Technology" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
