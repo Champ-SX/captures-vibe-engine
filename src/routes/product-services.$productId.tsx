@@ -46,7 +46,7 @@ function ProductDetail() {
         eyebrow="Product"
         title={product.name}
         intro={product.tagline}
-        cta={{ href: `mailto:hello@captures.photo?subject=${encodeURIComponent(product.name + " inquiry")}`, label: "Request a quote →" }}
+        cta={{ to: "/contact", label: "Request a quote →" }}
         meta={[
           { k: "Output", v: product.output },
           { k: "Setup", v: product.setup },
