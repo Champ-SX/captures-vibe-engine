@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
+import { useRef, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Marquee } from "@/components/Marquee";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
@@ -38,6 +39,29 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const marqueeProducts = products.slice(0, 10);
+  const modules = [
+    { m: "Live Gallery", v: "sync", img: techCloudGallery },
+    { m: "Instant Sharing", v: "ok", img: saas02 },
+    { m: "Customize UX/UI", v: "active", img: saas03 },
+    { m: "Framework Designer", v: "PRINT · GIF · Video", img: saas04 },
+    { m: "Event Dashboard", v: "live", img: saas05 },
+    { m: "Integration", v: "api", img: saas06 },
+    { m: "Multi-event Control", v: "ready", img: saas07 },
+    { m: "Realtime Monitor", v: "↗", img: saas08 },
+    { m: "Branding", v: "on", img: techMerchKeychain },
+    { m: "Analytics", v: "↗", img: techAnalytics },
+    { m: "Lead Collection", v: "auto", img: saas01 },
+  ];
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const [activeModule, setActiveModule] = useState(0);
+  const handleCarouselScroll = () => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-module-card]");
+    const cardWidth = card ? card.offsetWidth + 8 : 1;
+    const idx = Math.round(el.scrollLeft / cardWidth);
+    setActiveModule(Math.max(0, Math.min(modules.length - 1, idx)));
+  };
   return (
     <>
       {/* HERO — cinematic full-bleed */}
@@ -290,20 +314,9 @@ function Index() {
                   </div>
                   <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground">v2.4</span>
                 </div>
-                <div className="grid grid-cols-2 gap-px bg-border/40 md:grid-cols-3">
-                  {[
-                    { m: "Live Gallery", v: "sync", img: techCloudGallery },
-                    { m: "Instant Sharing", v: "ok", img: saas02 },
-                    { m: "Customize UX/UI", v: "active", img: saas03 },
-                    { m: "Framework Designer", v: "PRINT · GIF · Video", img: saas04 },
-                    { m: "Event Dashboard", v: "live", img: saas05 },
-                    { m: "Integration", v: "api", img: saas06 },
-                    { m: "Multi-event Control", v: "ready", img: saas07 },
-                    { m: "Realtime Monitor", v: "↗", img: saas08 },
-                    { m: "Branding", v: "on", img: techMerchKeychain },
-                    { m: "Analytics", v: "↗", img: techAnalytics },
-                    { m: "Lead Collection", v: "auto", img: saas01 },
-                  ].map((m) => (
+                {/* Desktop grid with hover popup */}
+                <div className="hidden grid-cols-3 gap-px bg-border/40 md:grid">
+                  {modules.map((m) => (
                     <div
                       key={m.m}
                       className="group relative bg-[color:var(--color-teal)] p-5 transition-colors duration-300 hover:bg-[color:var(--color-teal)]/70"
@@ -325,6 +338,45 @@ function Index() {
                       </div>
                     </div>
                   ))}
+                </div>
+
+                {/* Mobile swipe carousel */}
+                <div className="md:hidden">
+                  <div
+                    ref={carouselRef}
+                    onScroll={handleCarouselScroll}
+                    className="flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-smooth px-4 py-4 [&::-webkit-scrollbar]:hidden"
+                    style={{ scrollbarWidth: "none" }}
+                  >
+                    {modules.map((m) => (
+                      <div
+                        key={m.m}
+                        data-module-card
+                        className="relative aspect-[4/5] w-[78%] shrink-0 snap-start overflow-hidden border border-border/60 bg-[color:var(--color-teal)]"
+                      >
+                        <img src={m.img} alt={m.m} className="absolute inset-0 h-full w-full object-cover opacity-90" loading="lazy" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/0" />
+                        <div className="absolute inset-x-0 bottom-0 p-4">
+                          <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-primary">Module</div>
+                          <div className="mt-2 font-display text-base font-medium text-foreground">{m.m}</div>
+                          <div className="mt-1 font-mono text-[10px] text-muted-foreground">{m.v}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between border-t border-border/50 px-4 py-3">
+                    <div className="flex items-center gap-1.5">
+                      {modules.map((m, i) => (
+                        <span
+                          key={m.m}
+                          className={`h-1 transition-all duration-300 ${i === activeModule ? "w-4 bg-primary" : "w-1 bg-border"}`}
+                        />
+                      ))}
+                    </div>
+                    <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                      {String(activeModule + 1).padStart(2, "0")} / {String(modules.length).padStart(2, "0")} · swipe →
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
