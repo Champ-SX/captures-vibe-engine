@@ -23,6 +23,7 @@ export function SiteFooter() {
             { to: "/space-activation", label: "Space Activation" },
             { to: "/case-studies", label: "Case Studies" },
             { to: "/technology", label: "Technology" },
+            { to: "/contact", label: "Contact" },
           ]} />
           <div>
             <div className="eyebrow mb-4">System</div>

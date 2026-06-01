@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as SpaceActivationRouteImport } from './routes/space-activation'
 import { Route as ProductServicesRouteImport } from './routes/product-services'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductServicesIndexRouteImport } from './routes/product-services.index'
@@ -32,6 +33,11 @@ const SpaceActivationRoute = SpaceActivationRouteImport.update({
 const ProductServicesRoute = ProductServicesRouteImport.update({
   id: '/product-services',
   path: '/product-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CaseStudiesRoute = CaseStudiesRouteImport.update({
@@ -69,6 +75,7 @@ const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/case-studies': typeof CaseStudiesRouteWithChildren
+  '/contact': typeof ContactRoute
   '/product-services': typeof ProductServicesRouteWithChildren
   '/space-activation': typeof SpaceActivationRoute
   '/technology': typeof TechnologyRoute
@@ -79,6 +86,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/space-activation': typeof SpaceActivationRoute
   '/technology': typeof TechnologyRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
@@ -90,6 +98,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/case-studies': typeof CaseStudiesRouteWithChildren
+  '/contact': typeof ContactRoute
   '/product-services': typeof ProductServicesRouteWithChildren
   '/space-activation': typeof SpaceActivationRoute
   '/technology': typeof TechnologyRoute
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/case-studies'
+    | '/contact'
     | '/product-services'
     | '/space-activation'
     | '/technology'
@@ -113,6 +123,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
     | '/space-activation'
     | '/technology'
     | '/case-studies/$slug'
@@ -123,6 +134,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/case-studies'
+    | '/contact'
     | '/product-services'
     | '/space-activation'
     | '/technology'
@@ -135,6 +147,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CaseStudiesRoute: typeof CaseStudiesRouteWithChildren
+  ContactRoute: typeof ContactRoute
   ProductServicesRoute: typeof ProductServicesRouteWithChildren
   SpaceActivationRoute: typeof SpaceActivationRoute
   TechnologyRoute: typeof TechnologyRoute
@@ -161,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/product-services'
       fullPath: '/product-services'
       preLoaderRoute: typeof ProductServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/case-studies': {
@@ -239,6 +259,7 @@ const ProductServicesRouteWithChildren = ProductServicesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CaseStudiesRoute: CaseStudiesRouteWithChildren,
+  ContactRoute: ContactRoute,
   ProductServicesRoute: ProductServicesRouteWithChildren,
   SpaceActivationRoute: SpaceActivationRoute,
   TechnologyRoute: TechnologyRoute,
@@ -246,13 +267,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
