@@ -94,13 +94,13 @@ export function SiteHeader() {
               </div>
               <div className="mt-auto pb-8">
                 <SheetClose asChild>
-                  <a
-                    href="mailto:hello@captures.photo"
+                  <Link
+                    to="/contact"
                     className="inline-block bg-primary px-6 py-3 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
                     onClick={() => setOpen(false)}
                   >
                     Inquire
-                  </a>
+                  </Link>
                 </SheetClose>
               </div>
             </div>

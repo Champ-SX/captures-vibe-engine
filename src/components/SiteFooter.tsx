@@ -11,12 +11,12 @@ export function SiteFooter() {
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               Event experience tools built for modern activations. A SIXSHEET system.
             </p>
-            <a
-              href="mailto:hello@captures.photo"
+            <Link
+              to="/contact"
               className="mt-6 inline-block bg-primary px-5 py-3 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground"
             >
               Start a project →
-            </a>
+            </Link>
           </div>
           <FooterCol title="Explore" links={[
             { to: "/product-services", label: "Product & Services" },
@@ -29,7 +29,7 @@ export function SiteFooter() {
             <div className="eyebrow mb-4">System</div>
             <ul className="space-y-3 text-sm">
               <li><a href="http://captures.photo/booth" target="_blank" rel="noreferrer" className="hover:text-primary">Captures Booth ↗</a></li>
-              <li><a href="mailto:hello@captures.photo" className="hover:text-primary">hello@captures.photo</a></li>
+              <li><Link to="/contact" className="hover:text-primary">Contact us</Link></li>
             </ul>
           </div>
           <div>
