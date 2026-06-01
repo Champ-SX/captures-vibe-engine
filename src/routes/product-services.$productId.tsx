@@ -176,12 +176,12 @@ function ProductDetail() {
           <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
             Bring {product.name} to your next event.
           </h2>
-          <a
-            href={`mailto:hello@captures.photo?subject=${encodeURIComponent(product.name + " inquiry")}`}
+          <Link
+            to="/contact"
             className="mt-8 inline-block bg-primary px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground"
           >
             Request a quote →
-          </a>
+          </Link>
         </div>
       </section>
     </>
