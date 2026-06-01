@@ -46,7 +46,7 @@ function Technology() {
           </>
         }
         intro="Payments, creative print, GIF, cloud gallery, analytics, and photo merchandise — built as modular components you can mix into any activation."
-        cta={{ href: "mailto:hello@captures.photo", label: "Talk to us →" }}
+        cta={{ to: "/contact", label: "Talk to us →" }}
       />
 
       {/* INTRO */}
@@ -243,12 +243,12 @@ function Technology() {
           <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
             Pick the modules. We'll build the activation.
           </h2>
-          <a
-            href="mailto:hello@captures.photo"
+          <Link
+            to="/contact"
             className="mt-8 inline-block bg-primary px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground"
           >
             Talk to us →
-          </a>
+          </Link>
         </div>
       </section>
     </>
