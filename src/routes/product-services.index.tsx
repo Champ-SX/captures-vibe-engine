@@ -30,7 +30,7 @@ function ProductServices() {
           </>
         }
         intro="A Custom Experience and a hardware catalogue engineered around how modern activations actually flow — from unattended retail to high-volume brand experiences."
-        cta={{ href: "mailto:hello@captures.photo", label: "Talk to us →" }}
+        cta={{ to: "/contact", label: "Talk to us →" }}
       />
 
       {/* CUSTOM EXPERIENCE */}

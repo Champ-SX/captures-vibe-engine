@@ -436,12 +436,12 @@ function Index() {
             Built for events.<br />
             <span className="text-primary">Designed for engagement.</span>
           </h2>
-          <a
-            href="mailto:hello@captures.photo"
+          <Link
+            to="/contact"
             className="mt-10 inline-block bg-primary px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground hover:opacity-90"
           >
-            hello@captures.photo →
-          </a>
+            Get in touch →
+          </Link>
         </div>
       </section>
     </>

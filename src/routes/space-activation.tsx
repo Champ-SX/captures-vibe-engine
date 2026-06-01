@@ -51,7 +51,7 @@ function SpaceActivation() {
           </>
         }
         intro="Photoautomat systems designed to increase foot traffic, engagement, and repeat visits for your venue."
-        cta={{ href: "mailto:hello@captures.photo?subject=Space%20Activation%20inquiry", label: "Activate a space →" }}
+        cta={{ to: "/contact", label: "Activate a space →" }}
       />
 
       {/* FORMATS */}

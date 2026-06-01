@@ -28,7 +28,7 @@ function CaseStudiesIndex() {
           </>
         }
         intro="Brand activations, retail experiences, and live events powered by CAPTURES — from malls and festivals to fashion launches and permanent installs."
-        cta={{ href: "mailto:hello@captures.photo", label: "Start a project →" }}
+        cta={{ to: "/contact", label: "Start a project →" }}
       />
 
       <section className="border-b border-border">

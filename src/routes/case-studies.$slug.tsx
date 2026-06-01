@@ -173,12 +173,12 @@ function CaseStudyDetail() {
           <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
             Plan your next activation.
           </h2>
-          <a
-            href="mailto:hello@captures.photo"
+          <Link
+            to="/contact"
             className="mt-8 inline-block bg-primary px-8 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground"
           >
-            hello@captures.photo →
-          </a>
+            Get in touch →
+          </Link>
         </div>
       </section>
     </>
