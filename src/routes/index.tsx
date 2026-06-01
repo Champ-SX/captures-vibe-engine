@@ -10,6 +10,17 @@ import homeProductServices from "@/assets/home/home-product-services.jpg";
 import homeSpaceActivation from "@/assets/home/home-space-activation.jpg";
 import esteeLauderHero from "@/assets/case-studies/estee-lauder/001-7-2.jpg";
 import cartierHero from "@/assets/case-studies/cartier/001-6-2.jpg";
+import saas01 from "@/assets/saas/saas-01.png";
+import saas02 from "@/assets/saas/saas-02.png";
+import saas03 from "@/assets/saas/saas-03.png";
+import saas04 from "@/assets/saas/saas-04.png";
+import saas05 from "@/assets/saas/saas-05.png";
+import saas06 from "@/assets/saas/saas-06.png";
+import saas07 from "@/assets/saas/saas-07.png";
+import saas08 from "@/assets/saas/saas-08.png";
+import techAnalytics from "@/assets/technology/analytics-dashboard.jpg";
+import techCloudGallery from "@/assets/technology/cloud-gallery.jpg";
+import techMerchKeychain from "@/assets/technology/merch-keychain.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -281,22 +292,37 @@ function Index() {
                 </div>
                 <div className="grid grid-cols-2 gap-px bg-border/40 md:grid-cols-3">
                   {[
-                    { m: "Live Gallery", v: "sync" },
-                    { m: "Instant Sharing", v: "ok" },
-                    { m: "Customize UX/UI", v: "active" },
-                    { m: "Framework Designer", v: "PRINT · GIF · Video" },
-                    { m: "Event Dashboard", v: "live" },
-                    { m: "Integration", v: "api" },
-                    { m: "Multi-event Control", v: "ready" },
-                    { m: "Realtime Monitor", v: "↗" },
-                    { m: "Branding", v: "on" },
-                    { m: "Analytics", v: "↗" },
-                    { m: "Lead Collection", v: "auto" },
+                    { m: "Live Gallery", v: "sync", img: techCloudGallery },
+                    { m: "Instant Sharing", v: "ok", img: saas02 },
+                    { m: "Customize UX/UI", v: "active", img: saas03 },
+                    { m: "Framework Designer", v: "PRINT · GIF · Video", img: saas04 },
+                    { m: "Event Dashboard", v: "live", img: saas05 },
+                    { m: "Integration", v: "api", img: saas06 },
+                    { m: "Multi-event Control", v: "ready", img: saas07 },
+                    { m: "Realtime Monitor", v: "↗", img: saas08 },
+                    { m: "Branding", v: "on", img: techMerchKeychain },
+                    { m: "Analytics", v: "↗", img: techAnalytics },
+                    { m: "Lead Collection", v: "auto", img: saas01 },
                   ].map((m) => (
-                    <div key={m.m} className="bg-[color:var(--color-teal)] p-5">
+                    <div
+                      key={m.m}
+                      className="group relative bg-[color:var(--color-teal)] p-5 transition-colors duration-300 hover:bg-[color:var(--color-teal)]/70"
+                    >
                       <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-primary">Module</div>
                       <div className="mt-3 font-display text-sm font-medium">{m.m}</div>
                       <div className="mt-1 font-mono text-[10px] text-muted-foreground">{m.v}</div>
+                      {/* Hover preview popup */}
+                      <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 hidden w-[260px] -translate-x-1/2 -translate-y-1/2 scale-95 opacity-0 transition-all duration-200 ease-out group-hover:scale-100 group-hover:opacity-100 md:block">
+                        <div className="border border-primary/60 bg-background/95 p-2 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8)] backdrop-blur-sm">
+                          <div className="relative aspect-[4/3] overflow-hidden border border-border/60">
+                            <img src={m.img} alt={m.m} className="h-full w-full object-cover" loading="lazy" />
+                          </div>
+                          <div className="mt-2 flex items-center justify-between px-1">
+                            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-primary">Preview</span>
+                            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">{m.m}</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
