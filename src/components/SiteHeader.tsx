@@ -48,12 +48,12 @@ export function SiteHeader() {
             Captures Booth ↗
           </a>
         </nav>
-        <a
-          href="mailto:hello@captures.photo"
+        <Link
+          to="/contact"
           className="hidden bg-primary px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90 md:inline-block"
         >
           Inquire
-        </a>
+        </Link>
 
         {/* Mobile hamburger */}
         <Sheet open={open} onOpenChange={setOpen}>
