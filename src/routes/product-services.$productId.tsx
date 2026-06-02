@@ -108,9 +108,13 @@ function ProductDetail() {
           <SectionLabel index="05">Sample outputs</SectionLabel>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {product.samples.map((s: Sample, i: number) => (
-              <div key={i} className="group aspect-[4/5] overflow-hidden border border-border bg-surface">
+              <div key={i} className="group aspect-[4/5] overflow-hidden border border-border bg-surface p-3">
                 {typeof s === "string" ? (
-                  <img src={s} alt="" className="img-hover-lift h-full w-full object-cover" />
+                  <img
+                    src={s}
+                    alt=""
+                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
                 ) : (
                   <video
                     src={s.src}
@@ -119,7 +123,7 @@ function ProductDetail() {
                     muted
                     playsInline
                     preload="metadata"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                   />
                 )}
               </div>

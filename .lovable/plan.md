@@ -1,34 +1,17 @@
-## Goal
+Establish a project rule: when a source image's aspect ratio doesn't match its frame, render it at 100% width/height with `object-contain` (never crop). Surround it with an elegant matte so the empty space looks intentional.
 
-Replace the single placeholder sample on the **LCA (Light Camera Action)** product page with the 10 real samples you uploaded (8 images + 2 videos).
+## Files to change
 
-## Files
+### 1. `src/routes/product-services.$productId.tsx` — Sample outputs grid
+- Change tile wrapper to act as a matte: keep `aspect-[4/5]`, change background to `bg-surface` with inner padding `p-3`, keep border.
+- `<img>`: `object-cover` → `object-contain`; drop `img-hover-lift`; add `h-full w-full` + gentle `transition-transform duration-500 group-hover:scale-[1.02]`.
+- `<video>`: `object-cover` → `object-contain`.
 
-### 1. Upload assets to CDN via `lovable-assets`
-Upload the 10 uploaded files and create `.asset.json` pointers under `src/assets/products/lca/`:
-
-- `S__16195888_0.jpg` → `lca-sample-01.jpg.asset.json`
-- `JESSICA.jpg` → `lca-sample-02.jpg.asset.json`
-- `20201216_185255_006...jpg` → `lca-sample-03.jpg.asset.json`
-- `Sephora.jpg` → `lca-sample-04.jpg.asset.json`
-- `20201216_185432_141...jpg` → `lca-sample-05.jpg.asset.json`
-- `photo_1573308313.jpg` → `lca-sample-06.jpg.asset.json`
-- `Sephora_2.jpg` → `lca-sample-07.jpg.asset.json`
-- `S__16195890.jpg` → `lca-sample-08.jpg.asset.json`
-- `LOUBI GRAFT.mp4` → `lca-sample-09.mp4.asset.json`
-- `Fragrant Race Pace.mp4` → `lca-sample-10.mp4.asset.json`
-
-### 2. Extend sample type — `src/data/products.ts`
-Change `samples: string[]` to support video:
-```ts
-samples: (string | { type: "video"; src: string; poster?: string })[];
-```
-Import the 10 new asset pointers and replace LCA's `samples: [lca01]` with all 10 (8 image URLs + 2 video objects). Use sample-01 image as the poster for both videos.
-
-### 3. Render videos — `src/routes/product-services.$productId.tsx`
-Update the samples grid (line 108-114) to detect video items and render `<video controls muted playsInline poster=... className="h-full w-full object-cover">` for them, keep `<img>` for image strings. Parallax break (line 119) keeps using the first image (skip if first sample is video).
+### 2. `src/components/FeatureShowcase.tsx`
+- Desktop preview image (line ~110): `object-cover` → `object-contain`; add inner padding via wrapper (`p-6 md:p-10`) so contained images breathe.
+- Caption overlay: reduce gradient strength so a centered contained image isn't visually clipped by the overlay (lower opacity / shorter gradient).
+- Mobile accordion image (line ~148): `object-cover` → `object-contain`; add `bg-surface p-3`.
 
 ## Out of scope
-- Other 11 products are untouched.
-- No layout, copy, or design-token changes.
-- The `image` (card thumbnail) for LCA stays as the current `lca01`.
+- Lineup grid thumbnails, PageHero, ParallaxImage, data files, other routes — unchanged.
+- No new assets, no copy changes, no layout restructuring beyond padding/background.
