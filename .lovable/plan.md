@@ -1,17 +1,23 @@
-Establish a project rule: when a source image's aspect ratio doesn't match its frame, render it at 100% width/height with `object-contain` (never crop). Surround it with an elegant matte so the empty space looks intentional.
+Replace STORYBOOTH (product-04) sample outputs with the 8 uploaded media files, following the same pattern used for LCA.
 
-## Files to change
+## Steps
 
-### 1. `src/routes/product-services.$productId.tsx` — Sample outputs grid
-- Change tile wrapper to act as a matte: keep `aspect-[4/5]`, change background to `bg-surface` with inner padding `p-3`, keep border.
-- `<img>`: `object-cover` → `object-contain`; drop `img-hover-lift`; add `h-full w-full` + gentle `transition-transform duration-500 group-hover:scale-[1.02]`.
-- `<video>`: `object-cover` → `object-contain`.
+### 1. Upload 8 assets to CDN
+Run `lovable-assets create` for each uploaded file from `/mnt/user-uploads/`, writing pointer JSON to `src/assets/products/storybooth/`:
+- `stry-02_edited.jpg` → static image (also reused as card thumbnail + video poster)
+- `Kiehls-Home.gif` → animated GIF (renders as `<img>`, animates natively)
+- `3370.mp4`, `3354.mp4`, `K-029.MP4`, `K-005.MP4`, `106.mp4`, `96.mp4` → videos
 
-### 2. `src/components/FeatureShowcase.tsx`
-- Desktop preview image (line ~110): `object-cover` → `object-contain`; add inner padding via wrapper (`p-6 md:p-10`) so contained images breathe.
-- Caption overlay: reduce gradient strength so a centered contained image isn't visually clipped by the overlay (lower opacity / shorter gradient).
-- Mobile accordion image (line ~148): `object-cover` → `object-contain`; add `bg-surface p-3`.
+### 2. Update `src/data/products.ts` — product-04 (STORYBOOTH)
+- Import the 8 new asset pointers.
+- Replace `image:` (currently an Unsplash URL) with the `stry-02_edited.jpg` asset URL so the card thumbnail uses real content.
+- Replace `samples:` with 8 entries:
+  - `stry-02_edited.jpg.url` (image)
+  - `Kiehls-Home.gif.url` (image — GIF animates natively)
+  - 6 `{ type: "video", src: <mp4>.url, poster: stry-02_edited.jpg.url }` objects
+
+### 3. No renderer changes
+`src/routes/product-services.$productId.tsx` already supports `Sample = string | SampleVideo` with `object-contain` matte framing. GIFs render via `<img>` and animate. Videos use `<video controls muted playsInline poster>`.
 
 ## Out of scope
-- Lineup grid thumbnails, PageHero, ParallaxImage, data files, other routes — unchanged.
-- No new assets, no copy changes, no layout restructuring beyond padding/background.
+- All other products, layouts, copy, and components stay as-is.
