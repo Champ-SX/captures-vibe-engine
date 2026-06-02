@@ -100,19 +100,19 @@ export function FeatureShowcase({
           </div>
 
           <div className="relative overflow-hidden bg-background">
-            <div className="sticky top-20 aspect-[4/5] w-full overflow-hidden bg-surface lg:aspect-[4/3]">
+            <div className="sticky top-20 aspect-[4/5] w-full overflow-hidden bg-surface p-6 md:p-10 lg:aspect-[4/3]">
               {features.map((f, i) => (
                 <img
                   key={f.image + i}
                   src={f.image}
                   alt={f.title}
                   loading="lazy"
-                  className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out ${
+                  className={`absolute inset-0 h-full w-full object-contain p-6 md:p-10 transition-opacity duration-700 ease-out ${
                     i === active ? "opacity-100" : "opacity-0"
                   }`}
                 />
               ))}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent p-6 md:p-8">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/95 via-background/50 to-transparent p-6 md:p-8">
                 <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
                   Feature / {String(active + 1).padStart(2, "0")}
                 </div>
@@ -140,12 +140,12 @@ export function FeatureShowcase({
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <div className="overflow-hidden bg-surface">
+                  <div className="overflow-hidden bg-surface p-3">
                     <img
                       src={f.image}
                       alt={f.title}
                       loading="lazy"
-                      className="aspect-[4/3] w-full object-cover"
+                      className="aspect-[4/3] w-full object-contain"
                     />
                   </div>
                   {f.description && (
