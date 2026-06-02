@@ -1,23 +1,22 @@
-Replace STORYBOOTH (product-04) sample outputs with the 8 uploaded media files, following the same pattern used for LCA.
+## Replace POPUP FILMSLIDE (product-05) samples
 
-## Steps
+Currently product-05 uses 3 Unsplash placeholders. Replace with the 5 uploaded assets (3 Club21 collage images + 2 MP4 videos).
 
-### 1. Upload 8 assets to CDN
-Run `lovable-assets create` for each uploaded file from `/mnt/user-uploads/`, writing pointer JSON to `src/assets/products/storybooth/`:
-- `stry-02_edited.jpg` → static image (also reused as card thumbnail + video poster)
-- `Kiehls-Home.gif` → animated GIF (renders as `<img>`, animates natively)
-- `3370.mp4`, `3354.mp4`, `K-029.MP4`, `K-005.MP4`, `106.mp4`, `96.mp4` → videos
+### Steps
 
-### 2. Update `src/data/products.ts` — product-04 (STORYBOOTH)
-- Import the 8 new asset pointers.
-- Replace `image:` (currently an Unsplash URL) with the `stry-02_edited.jpg` asset URL so the card thumbnail uses real content.
-- Replace `samples:` with 8 entries:
-  - `stry-02_edited.jpg.url` (image)
-  - `Kiehls-Home.gif.url` (image — GIF animates natively)
-  - 6 `{ type: "video", src: <mp4>.url, poster: stry-02_edited.jpg.url }` objects
+1. **Upload 5 assets** to CDN via `lovable-assets` into `src/assets/products/filmslide/`:
+   - `filmslide-01.jpg` (20240424_183951_372.jpg — Club21 Barbie strip)
+   - `filmslide-02.jpg` (20240424_163159_124.jpg — Club21 girl portraits)
+   - `filmslide-03.jpg` (20240424_162938_147.jpg — Club21 couple grid)
+   - `filmslide-bc.mp4` (video for BC.MP4)
+   - `filmslide-main.mp4` (filmslide.MP4)
 
-### 3. No renderer changes
-`src/routes/product-services.$productId.tsx` already supports `Sample = string | SampleVideo` with `object-contain` matte framing. GIFs render via `<img>` and animate. Videos use `<video controls muted playsInline poster>`.
+2. **Edit `src/data/products.ts`**:
+   - Add 5 imports for the new `.asset.json` pointers.
+   - Replace product-05 `image:` (Unsplash) → `filmslide01.url` as the card thumbnail.
+   - Replace `samples:` array with 5 entries: 3 image URLs + 2 video objects (`{ type: "video", src, poster: filmslide01.url }`).
 
-## Out of scope
-- All other products, layouts, copy, and components stay as-is.
+3. **No render changes needed** — `product-services.$productId.tsx` already handles `Sample = string | SampleVideo` with `object-contain` matte framing.
+
+### Out of scope
+Other products, copy, layout, components.

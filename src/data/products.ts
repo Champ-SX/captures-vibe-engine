@@ -54,6 +54,11 @@ import storybooth01 from "@/assets/products/storybooth/storybooth-image.jpg.asse
 import storybooth3370 from "@/assets/products/storybooth/storybooth-3370.mp4.asset.json";
 import storyboothK005 from "@/assets/products/storybooth/storybooth-k005.mp4.asset.json";
 import storybooth106 from "@/assets/products/storybooth/storybooth-106.mp4.asset.json";
+import filmslide01 from "@/assets/products/filmslide/filmslide-01.jpg.asset.json";
+import filmslide02 from "@/assets/products/filmslide/filmslide-02.jpg.asset.json";
+import filmslide03 from "@/assets/products/filmslide/filmslide-03.jpg.asset.json";
+import filmslideBc from "@/assets/products/filmslide/filmslide-bc.mp4.asset.json";
+import filmslideMain from "@/assets/products/filmslide/filmslide-main.mp4.asset.json";
 import photomoov01 from "@/assets/products/photomoov/photomoov-01.gif";
 import photomoov02 from "@/assets/products/photomoov/photomoov-02.gif";
 import photomoov03 from "@/assets/products/photomoov/photomoov-03.gif";
@@ -161,12 +166,18 @@ export const products: Product[] = [
     description: "Nostalgic photo experience featuring collectible film-slide style outputs and creative print keepsakes.",
     output: "Digital · 4x6 print",
     bestFor: "Lifestyle activations, collectible merchandise, creative print",
-    image: img("photo-1535378917042-10a22c95931a"),
+    image: filmslide01.url,
     features: ["Real-time AI styles", "Custom style training", "Print + digital", "Gallery delivery"],
     setup: "2m x 2m · 220V · 60 min install",
     branding: "Custom AI style pack, print frame, UI skin",
     useCases: ["Lifestyle activations", "Collectible merchandise", "Memory-driven campaigns", "Creative print experiences"],
-    samples: [img("photo-1535378917042-10a22c95931a"), img("photo-1492684223066-81342ee5ff30"), img("photo-1493225457124-a3eb161ffa5f")],
+    samples: [
+      filmslide01.url,
+      filmslide02.url,
+      filmslide03.url,
+      { type: "video", src: filmslideMain.url, poster: filmslide01.url },
+      { type: "video", src: filmslideBc.url, poster: filmslide02.url },
+    ],
   },
   {
     id: "product-06",
