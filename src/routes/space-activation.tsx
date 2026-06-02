@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionLabel } from "@/components/SectionLabel";
 import { LocationMap } from "@/components/LocationMap";
+import { locations } from "@/data/locations";
+import { ArrowUpRight } from "lucide-react";
 import heroImg from "@/assets/space-activation/hero.jpg";
 import cafeCoincidence from "@/assets/space-activation/cafe-coincidence.jpg";
 import rkfCafe from "@/assets/space-activation/rkf-cafe.jpg";
@@ -80,7 +82,7 @@ function SpaceActivation() {
             <div>
               <SectionLabel index="03">Network</SectionLabel>
               <h2 className="mt-6 max-w-2xl text-3xl font-semibold tracking-tight md:text-5xl">
-                Active locations + expansion.
+                {locations.length} active locations across Bangkok & Nonthaburi.
               </h2>
             </div>
             <span className="hidden font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:block">
@@ -89,6 +91,34 @@ function SpaceActivation() {
           </div>
           <div className="mt-10">
             <LocationMap />
+          </div>
+
+          <div className="mt-16 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+            {locations.map((loc, i) => (
+              <a
+                key={loc.name}
+                href={loc.mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="group flex flex-col bg-background p-6 transition-colors hover:bg-surface"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[10px] tracking-[0.22em] text-primary">
+                    {String(i + 1).padStart(2, "0")} / {String(locations.length).padStart(2, "0")}
+                  </span>
+                  <ArrowUpRight
+                    className="h-4 w-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+                    strokeWidth={1.5}
+                  />
+                </div>
+                <h3 className="mt-5 font-display text-lg font-semibold leading-tight">{loc.name}</h3>
+                <div className="mt-1 text-sm text-muted-foreground">{loc.venue}</div>
+                <p className="mt-4 text-xs leading-relaxed text-muted-foreground">{loc.address}</p>
+                <span className="mt-6 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground transition-colors group-hover:text-primary">
+                  Open in Maps →
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
