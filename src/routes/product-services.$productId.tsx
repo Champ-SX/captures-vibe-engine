@@ -4,6 +4,7 @@ import { products } from "@/data/products";
 import { PageHero } from "@/components/PageHero";
 import { ParallaxImage } from "@/components/ParallaxImage";
 import { FeatureShowcase, type FeatureItem } from "@/components/FeatureShowcase";
+import type { Sample } from "@/data/products";
 
 export const Route = createFileRoute("/product-services/$productId")({
   loader: ({ params }) => {
@@ -106,7 +107,7 @@ function ProductDetail() {
         <div className="mx-auto max-w-[1400px] px-6 py-24">
           <SectionLabel index="05">Sample outputs</SectionLabel>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {product.samples.map((s, i: number) => (
+            {product.samples.map((s: Sample, i: number) => (
               <div key={i} className="group aspect-[4/5] overflow-hidden border border-border bg-surface">
                 {typeof s === "string" ? (
                   <img src={s} alt="" className="img-hover-lift h-full w-full object-cover" />
