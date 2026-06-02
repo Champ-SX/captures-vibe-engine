@@ -1,3 +1,6 @@
+export type SampleVideo = { type: "video"; src: string; poster?: string };
+export type Sample = string | SampleVideo;
+
 export type Product = {
   id: string;
   name: string;
@@ -10,7 +13,7 @@ export type Product = {
   setup: string;
   branding: string;
   useCases: string[];
-  samples: string[];
+  samples: Sample[];
 };
 
 const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1600&q=70`;
@@ -37,6 +40,16 @@ import boxShot05 from "@/assets/products/box-shot/box-shot-05.jpg";
 import boxShot06 from "@/assets/products/box-shot/box-shot-06.jpg";
 import boxShot07 from "@/assets/products/box-shot/box-shot-07.jpg";
 import lca01 from "@/assets/products/lca/lca-01.jpg";
+import lcaSample01 from "@/assets/products/lca/lca-sample-01.jpg.asset.json";
+import lcaSample02 from "@/assets/products/lca/lca-sample-02.jpg.asset.json";
+import lcaSample03 from "@/assets/products/lca/lca-sample-03.jpg.asset.json";
+import lcaSample04 from "@/assets/products/lca/lca-sample-04.jpg.asset.json";
+import lcaSample05 from "@/assets/products/lca/lca-sample-05.jpg.asset.json";
+import lcaSample06 from "@/assets/products/lca/lca-sample-06.jpg.asset.json";
+import lcaSample07 from "@/assets/products/lca/lca-sample-07.jpg.asset.json";
+import lcaSample08 from "@/assets/products/lca/lca-sample-08.jpg.asset.json";
+import lcaSample09 from "@/assets/products/lca/lca-sample-09.mp4.asset.json";
+import lcaSample10 from "@/assets/products/lca/lca-sample-10.mp4.asset.json";
 import photomoov01 from "@/assets/products/photomoov/photomoov-01.gif";
 import photomoov02 from "@/assets/products/photomoov/photomoov-02.gif";
 import photomoov03 from "@/assets/products/photomoov/photomoov-03.gif";
@@ -77,7 +90,18 @@ export const products: Product[] = [
     setup: "1.2m x 1.2m · 220V · 30 min install",
     branding: "Full-screen UI skin, printed frames, vinyl wrap",
     useCases: ["Simple activations", "Compact setups", "Fast deployment", "Mall events", "Sponsor booths"],
-    samples: [lca01],
+    samples: [
+      lcaSample01.url,
+      lcaSample02.url,
+      lcaSample03.url,
+      lcaSample04.url,
+      lcaSample05.url,
+      lcaSample06.url,
+      lcaSample07.url,
+      lcaSample08.url,
+      { type: "video", src: lcaSample09.url, poster: lcaSample01.url },
+      { type: "video", src: lcaSample10.url, poster: lcaSample01.url },
+    ],
   },
   {
     id: "product-02",

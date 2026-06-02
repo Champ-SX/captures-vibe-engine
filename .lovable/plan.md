@@ -1,33 +1,34 @@
 ## Goal
 
-Update the scrolling marquee strip on the homepage (the one currently showing "Photobooth systems · Space activations · Event technology · AI portrait · 360 video · Mirror booth · Live gallery · Brand experiences") to use the new list you specified.
+Replace the single placeholder sample on the **LCA (Light Camera Action)** product page with the 10 real samples you uploaded (8 images + 2 videos).
 
-## Change
+## Files
 
-**File:** `src/routes/index.tsx` (line 135, the first `<Marquee>` block)
+### 1. Upload assets to CDN via `lovable-assets`
+Upload the 10 uploaded files and create `.asset.json` pointers under `src/assets/products/lca/`:
 
-Replace the current 8 generic items with this exact sequence (4 categories + all 12 legacy products from `src/data/products.ts`):
+- `S__16195888_0.jpg` → `lca-sample-01.jpg.asset.json`
+- `JESSICA.jpg` → `lca-sample-02.jpg.asset.json`
+- `20201216_185255_006...jpg` → `lca-sample-03.jpg.asset.json`
+- `Sephora.jpg` → `lca-sample-04.jpg.asset.json`
+- `20201216_185432_141...jpg` → `lca-sample-05.jpg.asset.json`
+- `photo_1573308313.jpg` → `lca-sample-06.jpg.asset.json`
+- `Sephora_2.jpg` → `lca-sample-07.jpg.asset.json`
+- `S__16195890.jpg` → `lca-sample-08.jpg.asset.json`
+- `LOUBI GRAFT.mp4` → `lca-sample-09.mp4.asset.json`
+- `Fragrant Race Pace.mp4` → `lca-sample-10.mp4.asset.json`
 
-1. Live displays
-2. Multi-camera systems
-3. Brand activations
-4. Data and report
-5. LCA (Light Camera Action)
-6. PHOTOMOOV
-7. AUTO SNAP
-8. STORYBOOTH
-9. POPUP FILM SLIDE
-10. POPUP TOP VIEW
-11. POPUP STUDIO
-12. AI BOOTH
-13. BOX SHOT
-14. SX TALLY
-15. SX PORTABLE
-16. SX STANDARD
+### 2. Extend sample type — `src/data/products.ts`
+Change `samples: string[]` to support video:
+```ts
+samples: (string | { type: "video"; src: string; poster?: string })[];
+```
+Import the 10 new asset pointers and replace LCA's `samples: [lca01]` with all 10 (8 image URLs + 2 video objects). Use sample-01 image as the poster for both videos.
 
-Same styling, same bullet dot separators, same marquee speed (45s). Just the label list changes.
+### 3. Render videos — `src/routes/product-services.$productId.tsx`
+Update the samples grid (line 108-114) to detect video items and render `<video controls muted playsInline poster=... className="h-full w-full object-cover">` for them, keep `<img>` for image strings. Parallax break (line 119) keeps using the first image (skip if first sample is video).
 
 ## Out of scope
-- The second marquee (line 222) is untouched.
-- No changes to fonts, colors, or layout.
-- No changes to product data or other sections.
+- Other 11 products are untouched.
+- No layout, copy, or design-token changes.
+- The `image` (card thumbnail) for LCA stays as the current `lca01`.
