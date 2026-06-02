@@ -132,7 +132,7 @@ function Index() {
       {/* MARQUEE TICKER */}
       <section className="border-b border-border bg-background py-6">
         <Marquee speed={45}>
-          {["Photobooth systems", "Space activations", "Event technology", "AI portrait", "360 video", "Mirror booth", "Live gallery", "Brand experiences"].map((t, i) => (
+          {["Live displays", "Multi-camera systems", "Brand activations", "Data and report", "LCA (Light Camera Action)", "PHOTOMOOV", "AUTO SNAP", "STORYBOOTH", "POPUP FILM SLIDE", "POPUP TOP VIEW", "POPUP STUDIO", "AI BOOTH", "BOX SHOT", "SX TALLY", "SX PORTABLE", "SX STANDARD"].map((t, i) => (
             <div key={i} className="flex items-center gap-12">
               <span className="font-display text-3xl font-semibold tracking-tight md:text-5xl">{t}</span>
               <span className="h-2 w-2 rounded-full bg-primary" />
