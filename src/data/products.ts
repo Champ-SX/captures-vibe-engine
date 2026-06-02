@@ -51,13 +51,9 @@ import lcaSample08 from "@/assets/products/lca/lca-sample-08.jpg.asset.json";
 import lcaSample09 from "@/assets/products/lca/lca-sample-09.mp4.asset.json";
 import lcaSample10 from "@/assets/products/lca/lca-sample-10.mp4.asset.json";
 import storybooth01 from "@/assets/products/storybooth/storybooth-image.jpg.asset.json";
-import storyboothKiehls from "@/assets/products/storybooth/storybooth-kiehls.gif.asset.json";
 import storybooth3370 from "@/assets/products/storybooth/storybooth-3370.mp4.asset.json";
-import storybooth3354 from "@/assets/products/storybooth/storybooth-3354.mp4.asset.json";
-import storyboothK029 from "@/assets/products/storybooth/storybooth-k029.mp4.asset.json";
 import storyboothK005 from "@/assets/products/storybooth/storybooth-k005.mp4.asset.json";
 import storybooth106 from "@/assets/products/storybooth/storybooth-106.mp4.asset.json";
-import storybooth96 from "@/assets/products/storybooth/storybooth-96.mp4.asset.json";
 import photomoov01 from "@/assets/products/photomoov/photomoov-01.gif";
 import photomoov02 from "@/assets/products/photomoov/photomoov-02.gif";
 import photomoov03 from "@/assets/products/photomoov/photomoov-03.gif";
@@ -153,13 +149,9 @@ export const products: Product[] = [
     useCases: ["TikTok", "Instagram Reels", "Creator engagement", "Campaign storytelling", "Shareable content"],
     samples: [
       storybooth01.url,
-      storyboothKiehls.url,
       { type: "video", src: storybooth3370.url, poster: storybooth01.url },
-      { type: "video", src: storybooth3354.url, poster: storybooth01.url },
-      { type: "video", src: storyboothK029.url, poster: storybooth01.url },
       { type: "video", src: storyboothK005.url, poster: storybooth01.url },
       { type: "video", src: storybooth106.url, poster: storybooth01.url },
-      { type: "video", src: storybooth96.url, poster: storybooth01.url },
     ],
   },
   {
