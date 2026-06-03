@@ -4,14 +4,14 @@ import { LocationMap } from "@/components/LocationMap";
 import { locations } from "@/data/locations";
 import { ArrowUpRight } from "lucide-react";
 import heroImg from "@/assets/space-activation/hero.jpg";
-import cafeCoincidence from "@/assets/space-activation/cafe-coincidence.jpg";
-import rkfCafe from "@/assets/space-activation/rkf-cafe.jpg";
-import templeImg from "@/assets/space-activation/temple.jpg";
-import cafeOrange from "@/assets/space-activation/cafe-orange.jpg";
-import fotoautomatSkeleton from "@/assets/space-activation/fotoautomat-skeleton.jpg";
-import sxAutomatHallway from "@/assets/space-activation/sx-automat-hallway.jpg";
-import fotoautomatMannequin from "@/assets/space-activation/fotoautomat-mannequin.jpg";
-import baccBooth from "@/assets/space-activation/bacc-booth.jpg";
+import cafeCoincidence from "@/assets/space-activation/cafe-coincidence.jpg.asset.json";
+import coincidenceBooth from "@/assets/space-activation/coincidence-booth.jpg.asset.json";
+import coincidenceEntrance from "@/assets/space-activation/coincidence-entrance.jpg.asset.json";
+import rkCafeBooth from "@/assets/space-activation/rk-cafe-booth.jpg.asset.json";
+import phannapastTemple from "@/assets/space-activation/phannapast-temple.jpg.asset.json";
+import fotoautomatSkeleton from "@/assets/space-activation/fotoautomat-skeleton.jpg.asset.json";
+import sxOfficeHallway from "@/assets/space-activation/sx-office-hallway.jpg.asset.json";
+import photostripOrange from "@/assets/space-activation/photostrip-orange.jpg.asset.json";
 import { PageHero } from "@/components/PageHero";
 import { ParallaxImage } from "@/components/ParallaxImage";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
@@ -126,7 +126,7 @@ function SpaceActivation() {
       {/* PARALLAX BREAK */}
       <section className="border-b border-border">
         <ParallaxImage
-          src={cafeCoincidence}
+          src={cafeCoincidence.url}
           alt="Photoautomat in a café"
           speed={0.2}
           className="h-[55vh] min-h-[380px] w-full"
@@ -140,14 +140,14 @@ function SpaceActivation() {
           <SectionLabel index="04">In the wild</SectionLabel>
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             {[
-              { src: cafeCoincidence, alt: "co—incidence photoautomat at café entrance" },
-              { src: rkfCafe, alt: "Rubber Killer photoautomat in RK Café" },
-              { src: templeImg, alt: "Phannapast photoautomat at Chinese temple" },
-              { src: cafeOrange, alt: "Photoautomat installed in a warm orange café interior" },
-              { src: sxAutomatHallway, alt: "sx.automat photoautomat in a co-working hallway" },
-              { src: fotoautomatSkeleton, alt: "Fotoautomat booth styled with a vintage skeleton display" },
-              { src: fotoautomatMannequin, alt: "Fotoautomat booth set inside a vintage curiosity shop" },
-              { src: baccBooth, alt: "Thai illustrator photo booth installation at BACC" },
+              { src: cafeCoincidence.url, alt: "co—incidence photoautomat at café entrance" },
+              { src: coincidenceBooth.url, alt: "co—incidence freestanding photoautomat booth with purple curtain" },
+              { src: rkCafeBooth.url, alt: "Rubber Killer green PHOTOAUTOMAT booth in RK Café" },
+              { src: phannapastTemple.url, alt: "Phannapast photoautomat at a Bangkok Chinese temple" },
+              { src: fotoautomatSkeleton.url, alt: "Fotoautomat booth with vintage skeleton and chalkboard pricing" },
+              { src: sxOfficeHallway.url, alt: "sx.automat photoautomat in an office building hallway" },
+              { src: coincidenceEntrance.url, alt: "co—incidence photoautomat entrance with street greenery" },
+              { src: photostripOrange.url, alt: "Customer holding a fresh co—incidence photo strip" },
             ].map((img, i) => (
               <RevealOnScroll key={img.alt} delay={i * 80} className="group aspect-square overflow-hidden border border-border bg-surface">
                 <img src={img.src} alt={img.alt} className="img-hover-lift h-full w-full object-cover" />
