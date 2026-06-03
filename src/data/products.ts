@@ -53,7 +53,9 @@ import lcaSample10 from "@/assets/products/lca/lca-sample-10.mp4.asset.json";
 import storybooth01 from "@/assets/products/storybooth/storybooth-image.jpg.asset.json";
 import storybooth3370 from "@/assets/products/storybooth/storybooth-3370.mp4.asset.json";
 import storyboothK005 from "@/assets/products/storybooth/storybooth-k005.mp4.asset.json";
-import storybooth106 from "@/assets/products/storybooth/storybooth-106.mp4.asset.json";
+import storybooth3354 from "@/assets/products/storybooth/storybooth-3354.mp4.asset.json";
+import storyboothK029 from "@/assets/products/storybooth/storybooth-k029.mp4.asset.json";
+import storyboothKiehls from "@/assets/products/storybooth/storybooth-kiehls.gif.asset.json";
 import filmslide01 from "@/assets/products/filmslide/filmslide-01.jpg.asset.json";
 import filmslide02 from "@/assets/products/filmslide/filmslide-02.jpg.asset.json";
 import filmslide03 from "@/assets/products/filmslide/filmslide-03.jpg.asset.json";
@@ -154,9 +156,11 @@ export const products: Product[] = [
     useCases: ["TikTok", "Instagram Reels", "Creator engagement", "Campaign storytelling", "Shareable content"],
     samples: [
       storybooth01.url,
+      storyboothKiehls.url,
       { type: "video", src: storybooth3370.url, poster: storybooth01.url },
+      { type: "video", src: storybooth3354.url, poster: storybooth01.url },
       { type: "video", src: storyboothK005.url, poster: storybooth01.url },
-      { type: "video", src: storybooth106.url, poster: storybooth01.url },
+      { type: "video", src: storyboothK029.url, poster: storybooth01.url },
     ],
   },
   {
