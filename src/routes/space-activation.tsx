@@ -44,7 +44,7 @@ function SpaceActivation() {
     <>
       <PageHero
         image={heroImg}
-        alt="Lifestyle space activation"
+        alt="Fotoautomat booth inside a vintage curiosity shop"
         eyebrow="03 · Space Activation"
         title={
           <>
