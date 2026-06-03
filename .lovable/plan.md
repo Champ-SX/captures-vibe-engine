@@ -1,22 +1,16 @@
-## Replace POPUP FILMSLIDE (product-05) samples
+## Plan: Update Space Activation hero image
 
-Currently product-05 uses 3 Unsplash placeholders. Replace with the 5 uploaded assets (3 Club21 collage images + 2 MP4 videos).
+The image you just specified is the vintage curiosity shop / Fotoautomat + mannequin shot — currently used in the "In the wild" gallery as `fotoautomat-mannequin.jpg`. We'll promote it to the page hero.
 
-### Steps
+### Changes
 
-1. **Upload 5 assets** to CDN via `lovable-assets` into `src/assets/products/filmslide/`:
-   - `filmslide-01.jpg` (20240424_183951_372.jpg — Club21 Barbie strip)
-   - `filmslide-02.jpg` (20240424_163159_124.jpg — Club21 girl portraits)
-   - `filmslide-03.jpg` (20240424_162938_147.jpg — Club21 couple grid)
-   - `filmslide-bc.mp4` (video for BC.MP4)
-   - `filmslide-main.mp4` (filmslide.MP4)
+1. **Replace the hero asset** at `src/assets/space-activation/hero.jpg` with the uploaded image (`user-uploads://image.png`, re-saved as JPG).
+2. **Keep the gallery intact** — the same shot continues to appear in the gallery grid (it reads well in both contexts and matches the "in the wild" tone).
+3. **Update hero alt text** in `src/routes/space-activation.tsx` from "Lifestyle space activation" to something accurate, e.g. "Fotoautomat booth inside a vintage curiosity shop".
 
-2. **Edit `src/data/products.ts`**:
-   - Add 5 imports for the new `.asset.json` pointers.
-   - Replace product-05 `image:` (Unsplash) → `filmslide01.url` as the card thumbnail.
-   - Replace `samples:` array with 5 entries: 3 image URLs + 2 video objects (`{ type: "video", src, poster: filmslide01.url }`).
+No layout, copy, or structural changes — only the hero image source and its alt text.
 
-3. **No render changes needed** — `product-services.$productId.tsx` already handles `Sample = string | SampleVideo` with `object-contain` matte framing.
+### Files touched
 
-### Out of scope
-Other products, copy, layout, components.
+- `src/assets/space-activation/hero.jpg` (replaced)
+- `src/routes/space-activation.tsx` (alt text only)
