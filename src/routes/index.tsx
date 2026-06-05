@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SectionLabel } from "@/components/SectionLabel";
 import { Marquee } from "@/components/Marquee";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { ParallaxImage } from "@/components/ParallaxImage";
 import { products } from "@/data/products";
 import heroKiehls from "@/assets/hero/hero-kiehls.jpg";
+import heroJollySummer from "@/assets/hero/hero-jolly-summer.jpg.asset.json";
 import homeProductServices from "@/assets/home/home-product-services.jpg";
 import homeSpaceActivation from "@/assets/home/home-space-activation.jpg";
 import esteeLauderHero from "@/assets/case-studies/estee-lauder/001-7-2.jpg";
@@ -54,6 +55,17 @@ function Index() {
   ];
   const carouselRef = useRef<HTMLDivElement | null>(null);
   const [activeModule, setActiveModule] = useState(0);
+  const heroSlides = [
+    { src: heroKiehls, alt: "CAPTURES brand activation" },
+    { src: heroJollySummer.url, alt: "Siam Center x Jolly Bears Summer Carnival photoautomat" },
+  ];
+  const [activeSlide, setActiveSlide] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActiveSlide((i) => (i + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(id);
+  }, [heroSlides.length]);
   const handleCarouselScroll = () => {
     const el = carouselRef.current;
     if (!el) return;
@@ -66,12 +78,27 @@ function Index() {
     <>
       {/* HERO — cinematic full-bleed */}
       <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden border-b border-border">
-        <img
-          src={heroKiehls}
-          alt="CAPTURES brand activation"
-          className="absolute inset-0 h-full w-full object-cover animate-kenburns"
-        />
+        {heroSlides.map((s, i) => (
+          <img
+            key={s.src}
+            src={s.src}
+            alt={s.alt}
+            className={`absolute inset-0 h-full w-full object-cover animate-kenburns transition-opacity duration-1000 ${i === activeSlide ? "opacity-100" : "opacity-0"}`}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/10" />
+        {/* Slide indicators */}
+        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Show slide ${i + 1}`}
+              onClick={() => setActiveSlide(i)}
+              className={`h-1.5 transition-all ${i === activeSlide ? "w-8 bg-primary" : "w-4 bg-white/40 hover:bg-white/70"}`}
+            />
+          ))}
+        </div>
         <div className="absolute inset-x-0 top-0 z-10 mx-auto max-w-[1400px] px-6 pt-8">
           <SectionLabel index="00">A SIXSHEET system</SectionLabel>
         </div>
