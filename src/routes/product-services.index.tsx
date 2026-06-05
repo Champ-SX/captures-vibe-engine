@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionLabel } from "@/components/SectionLabel";
 import { products } from "@/data/products";
 import { PageHero } from "@/components/PageHero";
+import customExperienceBubbles from "@/assets/space-activation/custom-experience-bubbles.jpg.asset.json";
 
 export const Route = createFileRoute("/product-services/")({
   head: () => ({
@@ -35,11 +36,13 @@ function ProductServices() {
 
       {/* CUSTOM EXPERIENCE */}
       <section className="border-b border-border">
-        <div className="relative aspect-[16/8] w-full overflow-hidden border-b border-border bg-surface">
+        <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-border bg-surface sm:aspect-[16/10] lg:aspect-[16/8]">
           <img
-            src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=2200&q=80"
-            alt="Custom event experience"
-            className="h-full w-full object-cover"
+            src={customExperienceBubbles.url}
+            alt="Immersive transparent-bubble installation with LED backdrop — custom photobooth activation"
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover object-[50%_35%] sm:object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
           <div className="absolute left-6 top-6 bg-background/85 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
