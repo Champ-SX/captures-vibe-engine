@@ -1,32 +1,26 @@
-## Plan: Rebuild Space Activation gallery from the uploaded set, no duplicates
+## Plan: Turn the home hero into a 2-slide slideshow
 
-### What's wrong now
+### What's there now
 
-The gallery on `/space-activation` lists 8 tiles but only 6 are unique files:
-- `rkf-cafe.jpg` == `fotoautomat-skeleton.jpg` (identical bytes)
-- `sx-automat-hallway.jpg` == `cafe-coincidence.jpg` (identical bytes)
-- The new hero (mannequin + Fotoautomat) is the same shot as the gallery's `fotoautomat-mannequin.jpg`
+`src/routes/index.tsx` renders a single static hero image (`heroKiehls`) with a Ken Burns animation, a gradient overlay, and the floating headline/stats cards on top.
 
-Meanwhile `space_activation-2.zip` contains 11 fresh photos that aren't being used.
+### Change
 
-### Fix
-
-1. **Extract the zip** to a temp dir and pick the real photos (skip videos, 3D renders, the KV poster).
-2. **Wipe the current `src/assets/space-activation/` jpgs** and replace with the new set, uploaded via `lovable-assets` (CDN pointers, not committed binaries). Keep the hero as the mannequin + Fotoautomat shot you specified.
-3. **Update `src/routes/space-activation.tsx`**:
-   - Switch all gallery `import` statements from local `.jpg` files to the new `.jpg.asset.json` CDN pointers.
-   - Remove the duplicate slot — the hero shot will NOT also appear in the gallery.
-   - Final gallery = 8–10 unique tiles drawn from the new photo set, with accurate alt text for each (café, retail pop-up, temple, hallway booth, etc.).
-   - Hero remains the mannequin/Fotoautomat image (stays in `hero.jpg`).
-4. **Delete the now-unused legacy files** (`rkf-cafe.jpg`, `sx-automat-hallway.jpg`, `fotoautomat-mannequin.jpg`, etc.) so the asset folder doesn't accumulate orphans.
-
-### Out of scope
-
-- 3D renders (`JOSH-3D.png`, `BP-3D.png`, `Coin-3D.png`) and the `KV-CAP_TURES-09.png` brand poster — these don't belong in an "In the wild" photo gallery. If you want them surfaced somewhere, say where (e.g. a separate "Concepts" strip) and I'll add it in a follow-up.
-- Videos in the zip — same reasoning; tell me where to use them.
+1. **Upload the new image as a CDN asset** → `src/assets/hero/hero-jolly-summer.jpg.asset.json` (using `lovable-assets create` from the user upload — no binary committed).
+2. **Replace the single `<img>` in the HERO section** with a 2-slide crossfade slider:
+   - Slide 1: existing `heroKiehls` (Kiehl's activation).
+   - Slide 2: new Siam Center × Jolly Bears Summer Carnival photo.
+   - Auto-advance every ~6s, smooth opacity crossfade (~1s), keep the Ken Burns motion per slide.
+   - Small slide indicators (dots) at bottom-center of the hero, clickable to jump.
+   - All overlays (gradient, eyebrow label, headline card, stats) stay exactly as they are — they sit above the slides.
+3. **No other sections change.** This is hero-only.
 
 ### Files touched
 
-- `src/assets/space-activation/*.jpg.asset.json` (new, ~10 pointers)
-- `src/assets/space-activation/*.jpg` (legacy files removed)
-- `src/routes/space-activation.tsx` (imports + gallery array)
+- `src/assets/hero/hero-jolly-summer.jpg.asset.json` (new, CDN pointer)
+- `src/routes/index.tsx` (hero markup + tiny `useEffect`/`useState` for the active slide)
+
+### Out of scope
+
+- Adding more than 2 slides, arrow controls, or swipe gestures (can follow up if you want them).
+- Changing the headline, stats, or any copy.
