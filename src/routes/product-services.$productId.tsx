@@ -3,7 +3,6 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { products } from "@/data/products";
 import { PageHero } from "@/components/PageHero";
 import { ParallaxImage } from "@/components/ParallaxImage";
-import { FeatureShowcase, type FeatureItem } from "@/components/FeatureShowcase";
 import type { Sample } from "@/data/products";
 
 export const Route = createFileRoute("/product-services/$productId")({
@@ -52,7 +51,7 @@ function ProductDetail() {
           { k: "Output", v: product.output },
           { k: "Setup", v: product.setup },
           { k: "Best for", v: product.bestFor },
-          { k: "Features", v: `${product.features.length} modules` },
+          { k: "Samples", v: `${product.samples.length}` },
         ]}
       />
 
@@ -73,13 +72,41 @@ function ProductDetail() {
         </div>
       </section>
 
-      {/* FEATURES */}
-      <FeatureShowcase
-        sectionIndex="02"
-        sectionLabel="Features"
-        headline={`Inside the ${product.name}.`}
-        features={buildFeatureItems(product.features, product.samples, product.image)}
-      />
+      {/* SAMPLES */}
+      <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
+        <div className="mx-auto max-w-[1400px] px-6 py-24">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <SectionLabel index="02">Sample outputs</SectionLabel>
+            <h2 className="max-w-xl font-display text-3xl font-semibold tracking-tight md:text-4xl">
+              Inside the {product.name}.
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {product.samples.map((s: Sample, i: number) => (
+              <div key={i} className="group aspect-[4/5] overflow-hidden border border-border bg-surface p-3">
+                {typeof s === "string" ? (
+                  <img
+                    src={s}
+                    alt=""
+                    loading="lazy"
+                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                ) : (
+                  <video
+                    src={s.src}
+                    poster={s.poster}
+                    controls
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="h-full w-full object-contain"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* USE CASES + BRANDING */}
       <section className="border-b border-border">
@@ -102,36 +129,6 @@ function ProductDetail() {
         </div>
       </section>
 
-      {/* SAMPLES */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-[1400px] px-6 py-24">
-          <SectionLabel index="05">Sample outputs</SectionLabel>
-          <div className="mt-12 grid gap-4 md:grid-cols-3">
-            {product.samples.map((s: Sample, i: number) => (
-              <div key={i} className="group aspect-[4/5] overflow-hidden border border-border bg-surface p-3">
-                {typeof s === "string" ? (
-                  <img
-                    src={s}
-                    alt=""
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-                  />
-                ) : (
-                  <video
-                    src={s.src}
-                    poster={s.poster}
-                    controls
-                    muted
-                    playsInline
-                    preload="metadata"
-                    className="h-full w-full object-contain"
-                  />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* PARALLAX BREAK */}
       {typeof product.samples[0] === "string" && (
         <section className="border-b border-border">
@@ -148,7 +145,7 @@ function ProductDetail() {
       {/* LINEUP GRID */}
       <section className="border-b border-border" style={{ backgroundColor: "var(--color-teal)" }}>
         <div className="mx-auto max-w-[1400px] px-6 py-24">
-          <SectionLabel index="06">Lineup</SectionLabel>
+          <SectionLabel index="05">Lineup</SectionLabel>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">
             Explore more products
           </h2>
@@ -212,16 +209,4 @@ function Spec({ label, value }: { label: string; value: string }) {
       <div className="mt-3 font-display text-base font-medium">{value}</div>
     </div>
   );
-}
-
-function buildFeatureItems(
-  features: string[],
-  samples: string[],
-  fallback: string,
-): FeatureItem[] {
-  const pool = samples.length ? samples : [fallback];
-  return features.map((title, i) => ({
-    title,
-    image: pool[i % pool.length],
-  }));
 }

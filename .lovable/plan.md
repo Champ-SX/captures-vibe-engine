@@ -1,26 +1,17 @@
-## Plan: Turn the home hero into a 2-slide slideshow
+## Plan: Replace "02 Features" with sample outputs
 
-### What's there now
+The current "02 Features" section pairs feature names (e.g. "Animated prompts") with random sample images, which causes mismatches. We'll remove it entirely and promote "Sample outputs" into that slot.
 
-`src/routes/index.tsx` renders a single static hero image (`heroKiehls`) with a Ken Burns animation, a gradient overlay, and the floating headline/stats cards on top.
-
-### Change
-
-1. **Upload the new image as a CDN asset** → `src/assets/hero/hero-jolly-summer.jpg.asset.json` (using `lovable-assets create` from the user upload — no binary committed).
-2. **Replace the single `<img>` in the HERO section** with a 2-slide crossfade slider:
-   - Slide 1: existing `heroKiehls` (Kiehl's activation).
-   - Slide 2: new Siam Center × Jolly Bears Summer Carnival photo.
-   - Auto-advance every ~6s, smooth opacity crossfade (~1s), keep the Ken Burns motion per slide.
-   - Small slide indicators (dots) at bottom-center of the hero, clickable to jump.
-   - All overlays (gradient, eyebrow label, headline card, stats) stay exactly as they are — they sit above the slides.
-3. **No other sections change.** This is hero-only.
-
-### Files touched
-
-- `src/assets/hero/hero-jolly-summer.jpg.asset.json` (new, CDN pointer)
-- `src/routes/index.tsx` (hero markup + tiny `useEffect`/`useState` for the active slide)
+### Changes in `src/routes/product-services.$productId.tsx`
+1. **Delete** the `<FeatureShowcase>` block (lines 76–82) and its import.
+2. **Renumber** the Sample outputs section from `05` → `02`, keeping the existing 3-column responsive grid of images/videos.
+3. **Renumber** downstream sections:
+   - Use cases: `03` (unchanged)
+   - Branding: `04` (unchanged)
+   - Lineup: `05` (was 06)
+4. **Drop** the `buildFeatureItems` helper (no longer used).
+5. **Update PageHero meta**: replace `Features: N modules` chip with `Samples: N` (so the hero doesn't advertise the removed section).
 
 ### Out of scope
-
-- Adding more than 2 slides, arrow controls, or swipe gestures (can follow up if you want them).
-- Changing the headline, stats, or any copy.
+- No changes to product data, other pages, or the FeatureShowcase component file itself (kept for potential reuse).
+- No layout/typography changes to the samples grid.
