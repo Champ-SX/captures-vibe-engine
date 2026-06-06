@@ -86,6 +86,7 @@ import sxStandard03 from "@/assets/products/sx-standard/sx-standard-03.jpg";
 import sxStandard04 from "@/assets/products/sx-standard/sx-standard-04.jpg";
 import sxStandard05 from "@/assets/products/sx-standard/sx-standard-05.jpg";
 import sxStandard06 from "@/assets/products/sx-standard/sx-standard-06.jpg";
+import sxTally01 from "@/assets/products/sx-tally/sx-tally-01.jpg.asset.json";
 
 
 export const products: Product[] = [
@@ -246,12 +247,12 @@ export const products: Product[] = [
     description: "Standing-style photoautomat system designed for clean event deployment and high-volume guest interaction.",
     output: "Keychain · Charm · Magnet",
     bestFor: "Brand activations, mall events, weddings, high-traffic",
-    image: img("photo-1542038784456-1ea8e935640e"),
+    image: sxTally01.url,
     features: ["On-site fulfilment", "Multiple keepsake formats", "Branded packaging", "Live queue"],
     setup: "2m x 2m · 220V · 45 min install",
     branding: "Packaging, keepsake stickers, station wrap",
     useCases: ["Brand activations", "Mall events", "Weddings", "High-traffic events"],
-    samples: [img("photo-1542038784456-1ea8e935640e"), img("photo-1604881991720-f91add269bed"), img("photo-1492684223066-81342ee5ff30")],
+    samples: [sxTally01.url],
   },
   {
     id: "product-11",
